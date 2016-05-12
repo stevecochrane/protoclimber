@@ -102,17 +102,21 @@ class Player extends FlxSprite {
     private function justPressedLeft():Void {}
 
     private function justPressedB():Void {
-        velocity.x -= maxVelocity.x;
+        /*velocity.x -= maxVelocity.x;
 
         if (FlxG.keys.anyPressed(KeyMappings.getDPadUp())) {
             velocity.y -= maxVelocity.y;
         } else if (FlxG.keys.anyPressed(KeyMappings.getDPadDown())) {
             velocity.y += maxVelocity.y;
-        }
+        }*/
     }
 
     private function justPressedA():Void {
-        velocity.x += maxVelocity.x;
+        if (FlxG.keys.anyPressed(KeyMappings.getDPadLeft())) {
+            velocity.x -= maxVelocity.x;
+        } else if (FlxG.keys.anyPressed(KeyMappings.getDPadRight())) {
+            velocity.x += maxVelocity.x;
+        }
 
         if (FlxG.keys.anyPressed(KeyMappings.getDPadUp())) {
             velocity.y -= maxVelocity.y;
