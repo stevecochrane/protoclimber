@@ -11,6 +11,7 @@ import flixel.util.FlxDestroyUtil;
 class Player extends FlxSprite {
 
     private var gamepad:FlxGamepad;
+    private var stamina:Float;
 
     public function new(X:Float, Y:Float) {
 
@@ -33,12 +34,15 @@ class Player extends FlxSprite {
         width = 16;
         height = 24;
 
+        stamina = 0;
+
         //  Adjust the starting position now that we have the offsets.
         //  Generally the Tiled object is 2 tiles wide, so add half the difference between the width (20) and 2 tiles (32).
         x += 6;
         //  Similar for the starting y, take the height of the Tiled object (32) and subtract the height (28).
         y += 4;
 
+        FlxG.watch.add(this, "stamina", "stamina");
         FlxG.watch.add(this.acceleration, "x", "acceleration.x");
         FlxG.watch.add(this.acceleration, "y", "acceleration.y");
         FlxG.watch.add(this.maxVelocity, "x", "maxVelocity.x");
