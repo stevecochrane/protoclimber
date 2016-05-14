@@ -10,8 +10,9 @@ import flixel.util.FlxDestroyUtil;
 
 class Player extends FlxSprite {
 
+    public var stamina:Float;
+
     private var gamepad:FlxGamepad;
-    private var stamina:Float;
     private var staminaTimer:Float;
 
     public function new(X:Float, Y:Float) {
