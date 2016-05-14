@@ -12,6 +12,7 @@ class Player extends FlxSprite {
 
     private var gamepad:FlxGamepad;
     private var stamina:Float;
+    private var staminaTimer:Float;
 
     public function new(X:Float, Y:Float) {
 
@@ -35,6 +36,7 @@ class Player extends FlxSprite {
         height = 24;
 
         stamina = 0;
+        staminaTimer = 0;
 
         FlxG.watch.add(this, "stamina", "stamina");
         FlxG.watch.add(this.acceleration, "x", "acceleration.x");
@@ -51,7 +53,6 @@ class Player extends FlxSprite {
     }
 
     override public function update(elapsed:Float):Void {
-
         /*gamepad = FlxG.gamepads.lastActive;
         if (gamepad != null) {
             updateGamepadInput(gamepad);
@@ -60,6 +61,14 @@ class Player extends FlxSprite {
 
         super.update(elapsed);
 
+        staminaTimer += elapsed;
+
+        if (staminaTimer >= 0.2) {
+            staminaTimer = 0;
+            if (stamina > 0) {
+                stamina -= 1;
+            }
+        }
     }
 
     private function updateGamepadInput(gamepad:FlxGamepad):Void {
@@ -110,16 +119,20 @@ class Player extends FlxSprite {
     }
 
     private function justPressedA():Void {
-        if (FlxG.keys.anyPressed(KeyMappings.getDPadLeft())) {
-            velocity.x -= maxVelocity.x;
-        } else if (FlxG.keys.anyPressed(KeyMappings.getDPadRight())) {
-            velocity.x += maxVelocity.x;
-        }
+        if (stamina < 90) {
+            if (FlxG.keys.anyPressed(KeyMappings.getDPadLeft())) {
+                velocity.x -= maxVelocity.x;
+            } else if (FlxG.keys.anyPressed(KeyMappings.getDPadRight())) {
+                velocity.x += maxVelocity.x;
+            }
 
-        if (FlxG.keys.anyPressed(KeyMappings.getDPadUp())) {
-            velocity.y -= maxVelocity.y;
-        } else if (FlxG.keys.anyPressed(KeyMappings.getDPadDown())) {
-            velocity.y += maxVelocity.y;
+            if (FlxG.keys.anyPressed(KeyMappings.getDPadUp())) {
+                velocity.y -= maxVelocity.y;
+            } else if (FlxG.keys.anyPressed(KeyMappings.getDPadDown())) {
+                velocity.y += maxVelocity.y;
+            }
+
+            stamina += 10;
         }
     }
 
