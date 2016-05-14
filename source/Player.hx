@@ -36,7 +36,7 @@ class Player extends FlxSprite {
         width = 16;
         height = 24;
 
-        stamina = 0;
+        stamina = 100;
         staminaTimer = 0;
 
         FlxG.watch.add(this, "stamina", "stamina");
@@ -66,8 +66,8 @@ class Player extends FlxSprite {
 
         if (staminaTimer >= 0.2) {
             staminaTimer = 0;
-            if (stamina > 0) {
-                stamina -= 1;
+            if (stamina < 100) {
+                stamina += 1;
             }
         }
     }
@@ -120,7 +120,7 @@ class Player extends FlxSprite {
     }
 
     private function justPressedA():Void {
-        if (stamina < 90) {
+        if (stamina > 10) {
             if (FlxG.keys.anyPressed(KeyMappings.getDPadLeft())) {
                 velocity.x -= maxVelocity.x;
             } else if (FlxG.keys.anyPressed(KeyMappings.getDPadRight())) {
@@ -133,7 +133,7 @@ class Player extends FlxSprite {
                 velocity.y += maxVelocity.y;
             }
 
-            stamina += 10;
+            stamina -= 10;
         }
     }
 
