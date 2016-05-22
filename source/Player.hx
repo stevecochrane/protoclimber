@@ -74,42 +74,51 @@ class Player extends FlxSprite {
 
     private function updateGamepadInput(gamepad:FlxGamepad):Void {
 
-        if (gamepad.justPressed.DPAD_UP)    { justPressedUp();    }
-        if (gamepad.justPressed.DPAD_DOWN)  { justPressedDown();  }
-        if (gamepad.justPressed.DPAD_RIGHT) { justPressedRight(); }
-        if (gamepad.justPressed.DPAD_LEFT)  { justPressedLeft();  }
-        if (gamepad.justPressed.B)          { justPressedB();     }
-        if (gamepad.justPressed.A)          { justPressedA();     }
+        if (gamepad.justPressed.DPAD_UP)     { justPressedUp();     }
+        if (gamepad.justPressed.DPAD_DOWN)   { justPressedDown();   }
+        if (gamepad.justPressed.DPAD_RIGHT)  { justPressedRight();  }
+        if (gamepad.justPressed.DPAD_LEFT)   { justPressedLeft();   }
+        if (gamepad.justPressed.B)           { justPressedB();      }
+        if (gamepad.justPressed.A)           { justPressedA();      }
 
-        if (gamepad.pressed.DPAD_UP)        { pressedUp();        }
-        if (gamepad.pressed.DPAD_DOWN)      { pressedDown();      }
-        if (gamepad.pressed.DPAD_RIGHT)     { pressedRight();     }
-        if (gamepad.pressed.DPAD_LEFT)      { pressedLeft();      }
+        if (gamepad.pressed.DPAD_UP)         { pressedUp();         }
+        if (gamepad.pressed.DPAD_DOWN)       { pressedDown();       }
+        if (gamepad.pressed.DPAD_RIGHT)      { pressedRight();      }
+        if (gamepad.pressed.DPAD_LEFT)       { pressedLeft();       }
+        if (gamepad.pressed.B)               { pressedB();          }
+        if (gamepad.pressed.A)               { pressedA();          }
+
+        if (gamepad.justReleased.DPAD_UP)    { justReleasedUp();    }
+        if (gamepad.justReleased.DPAD_DOWN)  { justReleasedDown();  }
+        if (gamepad.justReleased.DPAD_RIGHT) { justReleasedRight(); }
+        if (gamepad.justReleased.DPAD_LEFT)  { justReleasedLeft();  }
+        if (gamepad.justReleased.B)          { justReleasedB();     }
+        if (gamepad.justReleased.A)          { justReleasedA();     }
 
     }
 
     private function updateKeyboardInput():Void {
 
-        if (FlxG.keys.anyJustPressed(KeyMappings.getDPadUp()))    { justPressedUp();     }
-        if (FlxG.keys.anyJustPressed(KeyMappings.getDPadDown()))  { justPressedDown();   }
-        if (FlxG.keys.anyJustPressed(KeyMappings.getDPadRight())) { justPressedRight();  }
-        if (FlxG.keys.anyJustPressed(KeyMappings.getDPadLeft()))  { justPressedLeft();   }
-        if (FlxG.keys.anyJustPressed(KeyMappings.getB()))         { justPressedB();      }
-        if (FlxG.keys.anyJustPressed(KeyMappings.getA()))         { justPressedA();      }
+        if (FlxG.keys.anyJustPressed(KeyMappings.getDPadUp()))     { justPressedUp();     }
+        if (FlxG.keys.anyJustPressed(KeyMappings.getDPadDown()))   { justPressedDown();   }
+        if (FlxG.keys.anyJustPressed(KeyMappings.getDPadRight()))  { justPressedRight();  }
+        if (FlxG.keys.anyJustPressed(KeyMappings.getDPadLeft()))   { justPressedLeft();   }
+        if (FlxG.keys.anyJustPressed(KeyMappings.getB()))          { justPressedB();      }
+        if (FlxG.keys.anyJustPressed(KeyMappings.getA()))          { justPressedA();      }
 
-        if (FlxG.keys.anyPressed(KeyMappings.getDPadUp()))        { pressedUp();         }
-        if (FlxG.keys.anyPressed(KeyMappings.getDPadDown()))      { pressedDown();       }
-        if (FlxG.keys.anyPressed(KeyMappings.getDPadRight()))     { pressedRight();      }
-        if (FlxG.keys.anyPressed(KeyMappings.getDPadLeft()))      { pressedLeft();       }
-        if (FlxG.keys.anyPressed(KeyMappings.getB()))             { pressedB();          }
-        if (FlxG.keys.anyPressed(KeyMappings.getA()))             { pressedA();          }
+        if (FlxG.keys.anyPressed(KeyMappings.getDPadUp()))         { pressedUp();         }
+        if (FlxG.keys.anyPressed(KeyMappings.getDPadDown()))       { pressedDown();       }
+        if (FlxG.keys.anyPressed(KeyMappings.getDPadRight()))      { pressedRight();      }
+        if (FlxG.keys.anyPressed(KeyMappings.getDPadLeft()))       { pressedLeft();       }
+        if (FlxG.keys.anyPressed(KeyMappings.getB()))              { pressedB();          }
+        if (FlxG.keys.anyPressed(KeyMappings.getA()))              { pressedA();          }
 
-        if (FlxG.keys.anyReleased(KeyMappings.getDPadUp()))       { justReleasedUp();    }
-        if (FlxG.keys.anyReleased(KeyMappings.getDPadDown()))     { justReleasedDown();  }
-        if (FlxG.keys.anyReleased(KeyMappings.getDPadRight()))    { justReleasedRight(); }
-        if (FlxG.keys.anyReleased(KeyMappings.getDPadLeft()))     { justReleasedLeft();  }
-        if (FlxG.keys.anyReleased(KeyMappings.getB()))            { justReleasedB();     }
-        if (FlxG.keys.anyReleased(KeyMappings.getA()))            { justReleasedA();     }
+        if (FlxG.keys.anyJustReleased(KeyMappings.getDPadUp()))    { justReleasedUp();    }
+        if (FlxG.keys.anyJustReleased(KeyMappings.getDPadDown()))  { justReleasedDown();  }
+        if (FlxG.keys.anyJustReleased(KeyMappings.getDPadRight())) { justReleasedRight(); }
+        if (FlxG.keys.anyJustReleased(KeyMappings.getDPadLeft()))  { justReleasedLeft();  }
+        if (FlxG.keys.anyJustReleased(KeyMappings.getB()))         { justReleasedB();     }
+        if (FlxG.keys.anyJustReleased(KeyMappings.getA()))         { justReleasedA();     }
 
     }
 
@@ -129,6 +138,27 @@ class Player extends FlxSprite {
     }
 
     private function justPressedA():Void {
+        FlxG.log.add("just pressed the A button");
+    }
+
+    private function pressedUp():Void {}
+    private function pressedDown():Void {}
+    private function pressedRight():Void {}
+    private function pressedLeft():Void {}
+    private function pressedB():Void {}
+
+    private function pressedA():Void {
+        FlxG.log.add("pressed the A button");
+    }
+
+    private function justReleasedUp():Void {}
+    private function justReleasedDown():Void {}
+    private function justReleasedRight():Void {}
+    private function justReleasedLeft():Void {}
+    private function justReleasedB():Void {}
+
+    private function justReleasedA():Void {
+        FlxG.log.add("just released the A button");
         if (stamina > 10) {
             if (FlxG.keys.anyPressed(KeyMappings.getDPadLeft())) {
                 velocity.x -= maxVelocity.x;
@@ -145,23 +175,5 @@ class Player extends FlxSprite {
             stamina -= 10;
         }
     }
-
-    private function pressedUp():Void {}
-    private function pressedDown():Void {}
-    private function pressedRight():Void {}
-    private function pressedLeft():Void {}
-    private function pressedB():Void {}
-
-    private function pressedA():Void {
-
-    }
-
-    private function justReleasedUp():Void {}
-    private function justReleasedDown():Void {}
-    private function justReleasedRight():Void {}
-    private function justReleasedLeft():Void {}
-    private function justReleasedB():Void {}
-    private function justReleasedA():Void {}
-
 
 }
