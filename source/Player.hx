@@ -13,17 +13,21 @@ class Player extends FlxSprite {
     public var charge:Float;
     public var stamina:Float;
 
+    private var baseJumpVelocity:Float;
     private var chargeTimer:Float;
     private var gamepad:FlxGamepad;
     private var isCharging:Bool;
     private var staminaTimer:Float;
+    private var velocityFactor:Float;
 
     public function new(X:Float, Y:Float) {
 
         super(X, Y);
 
-        maxVelocity.x = 200;
-        maxVelocity.y = 200;
+        //maxVelocity.x = 200;
+        //maxVelocity.y = 200;
+        baseJumpVelocity = 200;
+        velocityFactor = baseJumpVelocity;
 
         acceleration.x = 0;
         acceleration.y = 0;
@@ -178,15 +182,15 @@ class Player extends FlxSprite {
         isCharging = false;
         if (stamina > 10) {
             if (FlxG.keys.anyPressed(KeyMappings.getDPadLeft())) {
-                velocity.x -= maxVelocity.x;
+                velocity.x -= baseJumpVelocity + (charge * velocityFactor * 0.01);
             } else if (FlxG.keys.anyPressed(KeyMappings.getDPadRight())) {
-                velocity.x += maxVelocity.x;
+                velocity.x += baseJumpVelocity + (charge * velocityFactor * 0.01);
             }
 
             if (FlxG.keys.anyPressed(KeyMappings.getDPadUp())) {
-                velocity.y -= maxVelocity.y;
+                velocity.y -= baseJumpVelocity + (charge * velocityFactor * 0.01);
             } else if (FlxG.keys.anyPressed(KeyMappings.getDPadDown())) {
-                velocity.y += maxVelocity.y;
+                velocity.y += baseJumpVelocity + (charge * velocityFactor * 0.01);
             }
 
             stamina -= 10;
