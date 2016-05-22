@@ -7,6 +7,7 @@ import flixel.util.FlxDestroyUtil;
 
 class PlayState extends FlxState {
 
+    private var chargeBar:FlxBar;
     private var level:TiledLevel;
     private var player:Player;
     private var staminaBar:FlxBar;
@@ -25,16 +26,22 @@ class PlayState extends FlxState {
         staminaBar.createFilledBar(0xff000000, 0xffffffff, true, 0xffffffff);
         staminaBar.scrollFactor.set(0, 0);
 
+        chargeBar = new FlxBar(8, FlxG.height - 32, FlxBarFillDirection.LEFT_TO_RIGHT, 80, 8, player, "charge", 0, 100);
+        chargeBar.createFilledBar(0xff000000, 0xffffffff, true, 0xffffffff);
+        chargeBar.scrollFactor.set(0, 0);
+
         add(level.backgroundTiles);
         add(player); //  Player needs to be below pickaxes or weird unexplained things will happen
         add(level.foregroundTiles);
         add(staminaBar);
+        add(chargeBar);
 
     }
 
     override public function destroy():Void {
         super.destroy();
 
+        chargeBar = FlxDestroyUtil.destroy(chargeBar);
         player = FlxDestroyUtil.destroy(player);
         staminaBar = FlxDestroyUtil.destroy(staminaBar);
     }

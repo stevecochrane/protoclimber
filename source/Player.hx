@@ -10,9 +10,12 @@ import flixel.util.FlxDestroyUtil;
 
 class Player extends FlxSprite {
 
+    public var charge:Float;
     public var stamina:Float;
 
+    private var chargeTimer:Float;
     private var gamepad:FlxGamepad;
+    private var isCharging:Bool;
     private var staminaTimer:Float;
 
     public function new(X:Float, Y:Float) {
@@ -39,6 +42,11 @@ class Player extends FlxSprite {
         stamina = 100;
         staminaTimer = 0;
 
+        charge = 0;
+        chargeTimer = 0;
+        isCharging = false;
+
+        FlxG.watch.add(this, "charge", "charge");
         FlxG.watch.add(this, "stamina", "stamina");
         FlxG.watch.add(this.acceleration, "x", "acceleration.x");
         FlxG.watch.add(this.acceleration, "y", "acceleration.y");
@@ -139,6 +147,7 @@ class Player extends FlxSprite {
 
     private function justPressedA():Void {
         FlxG.log.add("just pressed the A button");
+        isCharging = true;
     }
 
     private function pressedUp():Void {}
@@ -146,10 +155,7 @@ class Player extends FlxSprite {
     private function pressedRight():Void {}
     private function pressedLeft():Void {}
     private function pressedB():Void {}
-
-    private function pressedA():Void {
-        FlxG.log.add("pressed the A button");
-    }
+    private function pressedA():Void {}
 
     private function justReleasedUp():Void {}
     private function justReleasedDown():Void {}
@@ -159,6 +165,7 @@ class Player extends FlxSprite {
 
     private function justReleasedA():Void {
         FlxG.log.add("just released the A button");
+        isCharging = false;
         if (stamina > 10) {
             if (FlxG.keys.anyPressed(KeyMappings.getDPadLeft())) {
                 velocity.x -= maxVelocity.x;
