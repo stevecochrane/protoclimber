@@ -90,17 +90,26 @@ class Player extends FlxSprite {
 
     private function updateKeyboardInput():Void {
 
-        if (FlxG.keys.anyJustPressed(KeyMappings.getDPadUp()))    { justPressedUp();    }
-        if (FlxG.keys.anyJustPressed(KeyMappings.getDPadDown()))  { justPressedDown();  }
-        if (FlxG.keys.anyJustPressed(KeyMappings.getDPadRight())) { justPressedRight(); }
-        if (FlxG.keys.anyJustPressed(KeyMappings.getDPadLeft()))  { justPressedLeft();  }
-        if (FlxG.keys.anyJustPressed(KeyMappings.getB()))         { justPressedB();     }
-        if (FlxG.keys.anyJustPressed(KeyMappings.getA()))         { justPressedA();     }
+        if (FlxG.keys.anyJustPressed(KeyMappings.getDPadUp()))    { justPressedUp();     }
+        if (FlxG.keys.anyJustPressed(KeyMappings.getDPadDown()))  { justPressedDown();   }
+        if (FlxG.keys.anyJustPressed(KeyMappings.getDPadRight())) { justPressedRight();  }
+        if (FlxG.keys.anyJustPressed(KeyMappings.getDPadLeft()))  { justPressedLeft();   }
+        if (FlxG.keys.anyJustPressed(KeyMappings.getB()))         { justPressedB();      }
+        if (FlxG.keys.anyJustPressed(KeyMappings.getA()))         { justPressedA();      }
 
-        if (FlxG.keys.anyPressed(KeyMappings.getDPadUp()))        { pressedUp();        }
-        if (FlxG.keys.anyPressed(KeyMappings.getDPadDown()))      { pressedDown();      }
-        if (FlxG.keys.anyPressed(KeyMappings.getDPadRight()))     { pressedRight();     }
-        if (FlxG.keys.anyPressed(KeyMappings.getDPadLeft()))      { pressedLeft();      }
+        if (FlxG.keys.anyPressed(KeyMappings.getDPadUp()))        { pressedUp();         }
+        if (FlxG.keys.anyPressed(KeyMappings.getDPadDown()))      { pressedDown();       }
+        if (FlxG.keys.anyPressed(KeyMappings.getDPadRight()))     { pressedRight();      }
+        if (FlxG.keys.anyPressed(KeyMappings.getDPadLeft()))      { pressedLeft();       }
+        if (FlxG.keys.anyPressed(KeyMappings.getB()))             { pressedB();          }
+        if (FlxG.keys.anyPressed(KeyMappings.getA()))             { pressedA();          }
+
+        if (FlxG.keys.anyReleased(KeyMappings.getDPadUp()))       { justReleasedUp();    }
+        if (FlxG.keys.anyReleased(KeyMappings.getDPadDown()))     { justReleasedDown();  }
+        if (FlxG.keys.anyReleased(KeyMappings.getDPadRight()))    { justReleasedRight(); }
+        if (FlxG.keys.anyReleased(KeyMappings.getDPadLeft()))     { justReleasedLeft();  }
+        if (FlxG.keys.anyReleased(KeyMappings.getB()))            { justReleasedB();     }
+        if (FlxG.keys.anyReleased(KeyMappings.getA()))            { justReleasedA();     }
 
     }
 
@@ -141,5 +150,18 @@ class Player extends FlxSprite {
     private function pressedDown():Void {}
     private function pressedRight():Void {}
     private function pressedLeft():Void {}
+    private function pressedB():Void {}
+
+    private function pressedA():Void {
+
+    }
+
+    private function justReleasedUp():Void {}
+    private function justReleasedDown():Void {}
+    private function justReleasedRight():Void {}
+    private function justReleasedLeft():Void {}
+    private function justReleasedB():Void {}
+    private function justReleasedA():Void {}
+
 
 }
