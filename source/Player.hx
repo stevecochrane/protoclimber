@@ -78,6 +78,16 @@ class Player extends FlxSprite {
                 stamina += 1;
             }
         }
+
+        if (isCharging) {
+            chargeTimer += elapsed;
+            if (chargeTimer >= 0.05) {
+                chargeTimer = 0;
+                if (charge < 100) {
+                    charge += 4;
+                }
+            }
+        }
     }
 
     private function updateGamepadInput(gamepad:FlxGamepad):Void {
@@ -181,6 +191,7 @@ class Player extends FlxSprite {
 
             stamina -= 10;
         }
+        charge = 0;
     }
 
 }
