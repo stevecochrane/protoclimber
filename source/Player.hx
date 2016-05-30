@@ -88,7 +88,7 @@ class Player extends FlxSprite {
             if (chargeTimer >= 0.05) {
                 chargeTimer = 0;
                 if (charge < 100) {
-                    charge += 4;
+                    charge += 5;
                 }
             }
         }
