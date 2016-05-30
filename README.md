@@ -10,6 +10,8 @@
   - Loses the feeling of using two hands, but much easier to mentally grasp, and frees up the Z button for something else.
 - proto-3:
   - Adds a stamina bar that depletes with each button press, and regenerates slowly over time.
-  - Inspired by the Temp meter in Excitebike.
+  - Inspired by the temperature meter in Excitebike.
   - At the moment it's too easy to get stuck and this should really regenerate faster if it stays.
   - This would also need some polish like a visual indication that your character is too tired to move.
+- proto-4:
+  - Adds a charged jump mechanic, where if you hold the jump button down, a new meter is charged, and at a full charge the jump is twice as strong.
