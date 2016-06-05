@@ -192,7 +192,10 @@ class Player extends FlxSprite {
     }
 
     private function pressedB():Void {}
-    private function pressedA():Void {}
+    private function pressedA():Void {
+        velocity.x = 0;
+        velocity.y = 0;
+    }
 
     private function justReleasedUp():Void {}
     private function justReleasedDown():Void {}
