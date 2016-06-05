@@ -82,7 +82,7 @@ class Player extends FlxSprite {
         if (staminaTimer >= 0.2) {
             staminaTimer = 0;
             if (stamina < 100) {
-                stamina += 1;
+                stamina += 5;
             }
         }
 
@@ -219,7 +219,7 @@ class Player extends FlxSprite {
                 velocity.y += baseJumpVelocity + (charge * velocityFactor * 0.01);
             }
 
-            stamina -= 10;
+            stamina -= 20;
         }
         charge = 0;
     }
