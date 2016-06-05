@@ -13,6 +13,7 @@ class Player extends FlxSprite {
     public var charge:Float;
     public var stamina:Float;
 
+    private var baseMoveVelocity:Float;
     private var baseJumpVelocity:Float;
     private var chargeTimer:Float;
     private var gamepad:FlxGamepad;
@@ -26,6 +27,7 @@ class Player extends FlxSprite {
 
         //maxVelocity.x = 200;
         //maxVelocity.y = 200;
+        baseMoveVelocity = 40;
         baseJumpVelocity = 200;
         velocityFactor = baseJumpVelocity;
 
@@ -70,6 +72,7 @@ class Player extends FlxSprite {
         if (gamepad != null) {
             updateGamepadInput(gamepad);
         }*/
+
         updateKeyboardInput();
 
         super.update(elapsed);
@@ -164,10 +167,30 @@ class Player extends FlxSprite {
         isCharging = true;
     }
 
-    private function pressedUp():Void {}
-    private function pressedDown():Void {}
-    private function pressedRight():Void {}
-    private function pressedLeft():Void {}
+    private function pressedUp():Void {
+        if (velocity.y >= -baseMoveVelocity) {
+            velocity.y = -baseMoveVelocity;
+        }
+    }
+
+    private function pressedDown():Void {
+        if (velocity.y <= baseMoveVelocity) {
+            velocity.y = baseMoveVelocity;
+        }
+    }
+
+    private function pressedRight():Void {
+        if (velocity.x <= baseMoveVelocity) {
+            velocity.x = baseMoveVelocity;
+        }
+    }
+
+    private function pressedLeft():Void {
+        if (velocity.x >= -baseMoveVelocity) {
+            velocity.x = -baseMoveVelocity;
+        }
+    }
+
     private function pressedB():Void {}
     private function pressedA():Void {}
 
