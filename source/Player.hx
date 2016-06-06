@@ -19,6 +19,7 @@ class Player extends FlxSprite {
     private var gamepad:FlxGamepad;
     private var isCharging:Bool;
     private var isClimbing:Bool;
+    private var lockedVelocityX:Float;
     private var staminaTimer:Float;
     private var velocityFactor:Float;
 
@@ -31,6 +32,7 @@ class Player extends FlxSprite {
         baseMoveVelocity = 40;
         baseJumpVelocity = 200;
         velocityFactor = baseJumpVelocity;
+        lockedVelocityX = 0;
 
         acceleration.x = 0;
         acceleration.y = 0;
@@ -57,6 +59,7 @@ class Player extends FlxSprite {
 
         FlxG.watch.add(this, "charge", "charge");
         FlxG.watch.add(this, "stamina", "stamina");
+        FlxG.watch.add(this, "touching", "touching");
         FlxG.watch.add(this.acceleration, "x", "acceleration.x");
         FlxG.watch.add(this.acceleration, "y", "acceleration.y");
         FlxG.watch.add(this.maxVelocity, "x", "maxVelocity.x");
@@ -77,6 +80,12 @@ class Player extends FlxSprite {
         }*/
 
         updateKeyboardInput();
+
+        //  Done before super.update() because that resets the touched/touching flags.
+        if (justTouched(FlxObject.FLOOR)) {
+            FlxG.log.add("just touched the floor");
+            lockedVelocityX = 0;
+        }
 
         super.update(elapsed);
 
@@ -101,6 +110,7 @@ class Player extends FlxSprite {
 
         if (!isClimbing) {
             acceleration.y = 400;
+            velocity.x = lockedVelocityX;
         } else {
             acceleration.y = 0;
         }
@@ -163,6 +173,7 @@ class Player extends FlxSprite {
 
     private function justPressedB():Void {
         if (isClimbing) {
+            lockedVelocityX = velocity.x;
             isClimbing = false;
         } else {
             isClimbing = true;

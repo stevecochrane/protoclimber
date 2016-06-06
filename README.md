@@ -21,3 +21,4 @@
 - proto-6:
   - Adds the ability to grab onto and let go of the wall with the B button.
   - Since there is no ground movement yet, all you can do once you've let go is grab onto the wall again.
+  - The player now maintains their current X velocity from when they let go of the wall until they hit the ground.
