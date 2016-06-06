@@ -18,6 +18,7 @@ class Player extends FlxSprite {
     private var chargeTimer:Float;
     private var gamepad:FlxGamepad;
     private var isCharging:Bool;
+    private var isClimbing:Bool;
     private var staminaTimer:Float;
     private var velocityFactor:Float;
 
@@ -51,6 +52,8 @@ class Player extends FlxSprite {
         charge = 0;
         chargeTimer = 0;
         isCharging = false;
+
+        isClimbing = true;
 
         FlxG.watch.add(this, "charge", "charge");
         FlxG.watch.add(this, "stamina", "stamina");
@@ -94,6 +97,12 @@ class Player extends FlxSprite {
                     charge += 5;
                 }
             }
+        }
+
+        if (!isClimbing) {
+            acceleration.y = 400;
+        } else {
+            acceleration.y = 0;
         }
     }
 
@@ -153,41 +162,49 @@ class Player extends FlxSprite {
     private function justPressedLeft():Void {}
 
     private function justPressedB():Void {
-        /*velocity.x -= maxVelocity.x;
-
-        if (FlxG.keys.anyPressed(KeyMappings.getDPadUp())) {
-            velocity.y -= maxVelocity.y;
-        } else if (FlxG.keys.anyPressed(KeyMappings.getDPadDown())) {
-            velocity.y += maxVelocity.y;
-        }*/
+        if (isClimbing) {
+            isClimbing = false;
+        } else {
+            isClimbing = true;
+        }
     }
 
     private function justPressedA():Void {
-        FlxG.log.add("just pressed the A button");
-        isCharging = true;
+        if (isClimbing) {
+            FlxG.log.add("just pressed the A button");
+            isCharging = true;
+        }
     }
 
     private function pressedUp():Void {
-        if (velocity.y >= -baseMoveVelocity) {
-            velocity.y = -baseMoveVelocity;
+        if (isClimbing) {
+            if (velocity.y >= -baseMoveVelocity) {
+                velocity.y = -baseMoveVelocity;
+            }
         }
     }
 
     private function pressedDown():Void {
-        if (velocity.y <= baseMoveVelocity) {
-            velocity.y = baseMoveVelocity;
+        if (isClimbing) {
+            if (velocity.y <= baseMoveVelocity) {
+                velocity.y = baseMoveVelocity;
+            }
         }
     }
 
     private function pressedRight():Void {
-        if (velocity.x <= baseMoveVelocity) {
-            velocity.x = baseMoveVelocity;
+        if (isClimbing) {
+            if (velocity.x <= baseMoveVelocity) {
+                velocity.x = baseMoveVelocity;
+            }
         }
     }
 
     private function pressedLeft():Void {
-        if (velocity.x >= -baseMoveVelocity) {
-            velocity.x = -baseMoveVelocity;
+        if (isClimbing) {
+            if (velocity.x >= -baseMoveVelocity) {
+                velocity.x = -baseMoveVelocity;
+            }
         }
     }
 

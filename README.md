@@ -18,3 +18,6 @@
 - proto-5:
   - Adds the ability to slowly climb in any direction by holding down that direction.
   - Moving in bursts or with the charged jump now consumes more stamina as a result (and arguably should consume even more).
+- proto-6:
+  - Adds the ability to grab onto and let go of the wall with the B button.
+  - Since there is no ground movement yet, all you can do once you've let go is grab onto the wall again.
