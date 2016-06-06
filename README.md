@@ -15,3 +15,6 @@
   - This would also need some polish like a visual indication that your character is too tired to move.
 - proto-4:
   - Adds a charged jump mechanic, where if you hold the jump button down, a new meter is charged, and at a full charge the jump is twice as strong.
+- proto-5:
+  - Adds the ability to slowly climb in any direction by holding down that direction.
+  - Moving in bursts or with the charged jump now consumes more stamina as a result (and arguably should consume even more).
