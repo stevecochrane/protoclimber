@@ -22,3 +22,6 @@
   - Adds the ability to grab onto and let go of the wall with the B button.
   - Since there is no ground movement yet, all you can do once you've let go is grab onto the wall again.
   - The player now maintains their current X velocity from when they let go of the wall until they hit the ground.
+- proto-7:
+  - To this point, the player could immediately start moving in a direction as soon as they grab on to the wall, which doesn't feel right.
+  - Now after grabbing the wall, directional controls are non-functional until a short time after the player has stopped sliding down.
