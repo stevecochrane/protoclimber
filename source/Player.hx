@@ -19,6 +19,9 @@ class Player extends FlxSprite {
     private var gamepad:FlxGamepad;
     private var isCharging:Bool;
     private var isClimbing:Bool;
+    private var isGrabbingTheWall:Bool;
+    private var isGrabbingTheWallDelayActive:Bool;
+    private var isGrabbingTheWallDelayTimer:Float;
     private var lockedVelocityX:Float;
     private var staminaTimer:Float;
     private var velocityFactor:Float;
@@ -57,6 +60,10 @@ class Player extends FlxSprite {
 
         isClimbing = true;
 
+        isGrabbingTheWall = false;
+        isGrabbingTheWallDelayActive = false;
+        isGrabbingTheWallDelayTimer = 0;
+
         FlxG.watch.add(this, "charge", "charge");
         FlxG.watch.add(this, "stamina", "stamina");
         FlxG.watch.add(this, "touching", "touching");
@@ -66,6 +73,9 @@ class Player extends FlxSprite {
         FlxG.watch.add(this.maxVelocity, "y", "maxVelocity.y");
         FlxG.watch.add(this.velocity, "x", "velocity.x");
         FlxG.watch.add(this.velocity, "y", "velocity.y");
+        FlxG.watch.add(this, "isGrabbingTheWall", "isGrabbingTheWall");
+        FlxG.watch.add(this, "isGrabbingTheWallDelayActive", "isGrabbingTheWallDelayActive");
+        FlxG.watch.add(this, "isGrabbingTheWallDelayTimer", "isGrabbingTheWallDelayTimer");
 
     }
 
@@ -113,6 +123,21 @@ class Player extends FlxSprite {
             velocity.x = lockedVelocityX;
         } else {
             acceleration.y = 0;
+        }
+
+        if (isGrabbingTheWall) {
+            if (velocity.y == 0) {
+                isGrabbingTheWallDelayActive = true;
+            }
+        }
+
+        if (isGrabbingTheWallDelayActive) {
+            isGrabbingTheWallDelayTimer += elapsed;
+            if (isGrabbingTheWallDelayTimer >= 0.25) {
+                isGrabbingTheWallDelayActive = false;
+                isGrabbingTheWall = false;
+                isGrabbingTheWallDelayTimer = 0;
+            }
         }
     }
 
@@ -177,6 +202,7 @@ class Player extends FlxSprite {
             isClimbing = false;
         } else {
             isClimbing = true;
+            isGrabbingTheWall = true;
         }
     }
 
@@ -188,7 +214,7 @@ class Player extends FlxSprite {
     }
 
     private function pressedUp():Void {
-        if (isClimbing) {
+        if (isClimbing && !isGrabbingTheWall) {
             if (velocity.y >= -baseMoveVelocity) {
                 velocity.y = -baseMoveVelocity;
             }
@@ -196,7 +222,7 @@ class Player extends FlxSprite {
     }
 
     private function pressedDown():Void {
-        if (isClimbing) {
+        if (isClimbing && !isGrabbingTheWall) {
             if (velocity.y <= baseMoveVelocity) {
                 velocity.y = baseMoveVelocity;
             }
@@ -204,7 +230,7 @@ class Player extends FlxSprite {
     }
 
     private function pressedRight():Void {
-        if (isClimbing) {
+        if (isClimbing && !isGrabbingTheWall) {
             if (velocity.x <= baseMoveVelocity) {
                 velocity.x = baseMoveVelocity;
             }
@@ -212,7 +238,7 @@ class Player extends FlxSprite {
     }
 
     private function pressedLeft():Void {
-        if (isClimbing) {
+        if (isClimbing && !isGrabbingTheWall) {
             if (velocity.x >= -baseMoveVelocity) {
                 velocity.x = -baseMoveVelocity;
             }
