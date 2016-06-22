@@ -15,6 +15,7 @@ class Player extends FlxSprite {
 
     private var baseMoveVelocity:Float;
     private var baseJumpVelocity:Float;
+    private var baseRunVelocity:Float;
     private var chargeTimer:Float;
     private var gamepad:FlxGamepad;
     private var isCharging:Bool;
@@ -37,6 +38,8 @@ class Player extends FlxSprite {
         baseJumpVelocity = 200;
         velocityFactor = baseJumpVelocity;
         lockedVelocityX = 0;
+
+        baseRunVelocity = 100;
 
         acceleration.x = 0;
         acceleration.y = 0;
@@ -244,6 +247,8 @@ class Player extends FlxSprite {
             if (velocity.x <= baseMoveVelocity) {
                 velocity.x = baseMoveVelocity;
             }
+        } else if (isOnGround) {
+            velocity.x = baseRunVelocity;
         }
     }
 
@@ -252,6 +257,8 @@ class Player extends FlxSprite {
             if (velocity.x >= -baseMoveVelocity) {
                 velocity.x = -baseMoveVelocity;
             }
+        } else if (isOnGround) {
+            velocity.x = -baseRunVelocity;
         }
     }
 
