@@ -223,6 +223,9 @@ class Player extends FlxSprite {
         if (isClimbing) {
             FlxG.log.add("just pressed the A button");
             isCharging = true;
+        } else if (isOnGround && isTouching(FlxObject.FLOOR)) {
+            FlxG.log.add("Jump!");
+            velocity.y = -400 * 0.4;
         }
     }
 
@@ -264,8 +267,10 @@ class Player extends FlxSprite {
 
     private function pressedB():Void {}
     private function pressedA():Void {
-        velocity.x = 0;
-        velocity.y = 0;
+        if (isClimbing) {
+            velocity.x = 0;
+            velocity.y = 0;
+        }
     }
 
     private function justReleasedUp():Void {}
