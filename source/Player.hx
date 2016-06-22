@@ -22,6 +22,7 @@ class Player extends FlxSprite {
     private var isGrabbingTheWall:Bool;
     private var isGrabbingTheWallDelayActive:Bool;
     private var isGrabbingTheWallDelayTimer:Float;
+    private var isOnGround:Bool;
     private var lockedVelocityX:Float;
     private var staminaTimer:Float;
     private var velocityFactor:Float;
@@ -64,6 +65,8 @@ class Player extends FlxSprite {
         isGrabbingTheWallDelayActive = false;
         isGrabbingTheWallDelayTimer = 0;
 
+        isOnGround = false;
+
         FlxG.watch.add(this, "charge", "charge");
         FlxG.watch.add(this, "stamina", "stamina");
         FlxG.watch.add(this, "touching", "touching");
@@ -77,6 +80,7 @@ class Player extends FlxSprite {
         FlxG.watch.add(this, "isGrabbingTheWall", "isGrabbingTheWall");
         FlxG.watch.add(this, "isGrabbingTheWallDelayActive", "isGrabbingTheWallDelayActive");
         FlxG.watch.add(this, "isGrabbingTheWallDelayTimer", "isGrabbingTheWallDelayTimer");
+        FlxG.watch.add(this, "isOnGround", "isOnGround");
 
     }
 
@@ -96,6 +100,10 @@ class Player extends FlxSprite {
         if (justTouched(FlxObject.FLOOR)) {
             FlxG.log.add("just touched the floor");
             lockedVelocityX = 0;
+
+            if (!isClimbing) {
+                isOnGround = true;
+            }
         }
 
         super.update(elapsed);
@@ -204,6 +212,7 @@ class Player extends FlxSprite {
         } else {
             isClimbing = true;
             isGrabbingTheWall = true;
+            isOnGround = false;
         }
     }
 
