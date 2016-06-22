@@ -13,6 +13,8 @@ class Player extends FlxSprite {
     public var charge:Float;
     public var stamina:Float;
 
+    private var accelerationGravity:Float;
+    private var baseGroundJumpVelocity:Float;
     private var baseMoveVelocity:Float;
     private var baseJumpVelocity:Float;
     private var baseRunVelocity:Float;
@@ -32,6 +34,8 @@ class Player extends FlxSprite {
 
         super(X, Y);
 
+        accelerationGravity = 400;
+
         //maxVelocity.x = 200;
         //maxVelocity.y = 200;
         baseMoveVelocity = 40;
@@ -40,6 +44,7 @@ class Player extends FlxSprite {
         lockedVelocityX = 0;
 
         baseRunVelocity = 100;
+        baseGroundJumpVelocity = -accelerationGravity * 0.4;
 
         acceleration.x = 0;
         acceleration.y = 0;
@@ -131,7 +136,7 @@ class Player extends FlxSprite {
         }
 
         if (!isClimbing) {
-            acceleration.y = 400;
+            acceleration.y = accelerationGravity;
             velocity.x = lockedVelocityX;
         } else {
             acceleration.y = 0;
@@ -225,7 +230,7 @@ class Player extends FlxSprite {
             isCharging = true;
         } else if (isOnGround && isTouching(FlxObject.FLOOR)) {
             FlxG.log.add("Jump!");
-            velocity.y = -400 * 0.4;
+            velocity.y = baseGroundJumpVelocity;
         }
     }
 
