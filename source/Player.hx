@@ -269,23 +269,25 @@ class Player extends FlxSprite {
 
     private function justReleasedA():Void {
         FlxG.log.add("just released the A button");
-        isCharging = false;
-        if (stamina > 10) {
-            if (FlxG.keys.anyPressed(KeyMappings.getDPadLeft())) {
-                velocity.x -= baseJumpVelocity + (charge * velocityFactor * 0.01);
-            } else if (FlxG.keys.anyPressed(KeyMappings.getDPadRight())) {
-                velocity.x += baseJumpVelocity + (charge * velocityFactor * 0.01);
-            }
+        if (isClimbing) {
+            isCharging = false;
+            if (stamina > 10) {
+                if (FlxG.keys.anyPressed(KeyMappings.getDPadLeft())) {
+                    velocity.x -= baseJumpVelocity + (charge * velocityFactor * 0.01);
+                } else if (FlxG.keys.anyPressed(KeyMappings.getDPadRight())) {
+                    velocity.x += baseJumpVelocity + (charge * velocityFactor * 0.01);
+                }
 
-            if (FlxG.keys.anyPressed(KeyMappings.getDPadUp())) {
-                velocity.y -= baseJumpVelocity + (charge * velocityFactor * 0.01);
-            } else if (FlxG.keys.anyPressed(KeyMappings.getDPadDown())) {
-                velocity.y += baseJumpVelocity + (charge * velocityFactor * 0.01);
-            }
+                if (FlxG.keys.anyPressed(KeyMappings.getDPadUp())) {
+                    velocity.y -= baseJumpVelocity + (charge * velocityFactor * 0.01);
+                } else if (FlxG.keys.anyPressed(KeyMappings.getDPadDown())) {
+                    velocity.y += baseJumpVelocity + (charge * velocityFactor * 0.01);
+                }
 
-            stamina -= 20;
+                stamina -= 20;
+            }
+            charge = 0;
         }
-        charge = 0;
     }
 
 }
