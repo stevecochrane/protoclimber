@@ -73,6 +73,7 @@ class Player extends FlxSprite {
         FlxG.watch.add(this.maxVelocity, "y", "maxVelocity.y");
         FlxG.watch.add(this.velocity, "x", "velocity.x");
         FlxG.watch.add(this.velocity, "y", "velocity.y");
+        FlxG.watch.add(this, "isClimbing", "isClimbing");
         FlxG.watch.add(this, "isGrabbingTheWall", "isGrabbingTheWall");
         FlxG.watch.add(this, "isGrabbingTheWallDelayActive", "isGrabbingTheWallDelayActive");
         FlxG.watch.add(this, "isGrabbingTheWallDelayTimer", "isGrabbingTheWallDelayTimer");
