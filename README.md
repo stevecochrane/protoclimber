@@ -25,3 +25,5 @@
 - proto-7:
   - To this point, the player could immediately start moving in a direction as soon as they grab on to the wall, which doesn't feel right.
   - Now after grabbing the wall, directional controls are non-functional until a short time after the player has stopped sliding down.
+- proto-8:
+  - Added the ability to move and jump while on the ground.
