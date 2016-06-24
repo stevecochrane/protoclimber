@@ -27,3 +27,5 @@
   - Now after grabbing the wall, directional controls are non-functional until a short time after the player has stopped sliding down.
 - proto-8:
   - Added the ability to move and jump while on the ground.
+- proto-9:
+  - Hitting the A button while climbing now takes you off of the wall.
