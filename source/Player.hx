@@ -302,6 +302,9 @@ class Player extends FlxSprite {
                 }
 
                 stamina -= 20;
+
+                lockedVelocityX = velocity.x;
+                isClimbing = false;
             }
             charge = 0;
         }
