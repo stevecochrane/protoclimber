@@ -154,8 +154,8 @@ class TiledLevel extends TiledMap {
                 climbZone.height = obj.height;
                 climbZone.alpha = 0;
                 climbZone.immovable = true;
-                /*Groups.climbZones.add(climbZone);
-                Groups.backgroundSprites.add(climbZone);*/
+                Groups.climbZones.add(climbZone);
+                /*Groups.backgroundSprites.add(climbZone);*/
 
             case "player":
                 /*RoomData.addPlayerSpawnPoint(Std.parseInt(obj.properties.get("room")), x, y);*/

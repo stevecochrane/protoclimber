@@ -31,6 +31,7 @@ class PlayState extends FlxState {
         chargeBar.scrollFactor.set(0, 0);
 
         add(level.backgroundTiles);
+        add(Groups.climbZones);
         add(player); //  Player needs to be below pickaxes or weird unexplained things will happen
         add(level.foregroundTiles);
         add(staminaBar);
