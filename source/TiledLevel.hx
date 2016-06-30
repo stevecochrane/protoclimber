@@ -152,7 +152,7 @@ class TiledLevel extends TiledMap {
                 var climbZone:FlxSprite = new FlxSprite(x, y);
                 climbZone.width = obj.width;
                 climbZone.height = obj.height;
-                climbZone.alpha = 0;
+                climbZone.makeGraphic(Std.int(climbZone.width), Std.int(climbZone.height), 0x00000000);
                 climbZone.immovable = true;
                 Groups.climbZones.add(climbZone);
                 /*Groups.backgroundSprites.add(climbZone);*/

@@ -218,9 +218,11 @@ class Player extends FlxSprite {
             lockedVelocityX = velocity.x;
             isClimbing = false;
         } else {
-            isClimbing = true;
-            isGrabbingTheWall = true;
-            isOnGround = false;
+            if (overlaps(Groups.climbZones)) {
+                isClimbing = true;
+                isGrabbingTheWall = true;
+                isOnGround = false;
+            }
         }
     }
 
