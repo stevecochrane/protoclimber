@@ -19,6 +19,7 @@ class Player extends FlxSprite {
     private var baseJumpVelocity:Float;
     private var baseRunVelocity:Float;
     private var chargeTimer:Float;
+    private var climbOffset:Float;
     private var gamepad:FlxGamepad;
     private var isCharging:Bool;
     private var isClimbing:Bool;
@@ -74,6 +75,8 @@ class Player extends FlxSprite {
         isGrabbingTheWallDelayTimer = 0;
 
         isOnGround = false;
+
+        climbOffset = 8;
 
         FlxG.watch.add(this, "charge", "charge");
         FlxG.watch.add(this, "stamina", "stamina");
@@ -237,7 +240,7 @@ class Player extends FlxSprite {
     }
 
     private function pressedUp():Void {
-        if (isClimbing && !isGrabbingTheWall) {
+        if (isClimbing && !isGrabbingTheWall && overlapsAt(x, y - height + climbOffset, Groups.climbZones)) {
             if (velocity.y >= -baseMoveVelocity) {
                 velocity.y = -baseMoveVelocity;
             }
@@ -245,7 +248,7 @@ class Player extends FlxSprite {
     }
 
     private function pressedDown():Void {
-        if (isClimbing && !isGrabbingTheWall) {
+        if (isClimbing && !isGrabbingTheWall && overlapsAt(x, y + climbOffset, Groups.climbZones)) {
             if (velocity.y <= baseMoveVelocity) {
                 velocity.y = baseMoveVelocity;
             }
@@ -253,7 +256,7 @@ class Player extends FlxSprite {
     }
 
     private function pressedRight():Void {
-        if (isClimbing && !isGrabbingTheWall) {
+        if (isClimbing && !isGrabbingTheWall && overlapsAt(x + width + climbOffset, y, Groups.climbZones)) {
             if (velocity.x <= baseMoveVelocity) {
                 velocity.x = baseMoveVelocity;
             }
@@ -263,7 +266,7 @@ class Player extends FlxSprite {
     }
 
     private function pressedLeft():Void {
-        if (isClimbing && !isGrabbingTheWall) {
+        if (isClimbing && !isGrabbingTheWall && overlapsAt(x - climbOffset, y, Groups.climbZones)) {
             if (velocity.x >= -baseMoveVelocity) {
                 velocity.x = -baseMoveVelocity;
             }
