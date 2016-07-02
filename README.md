@@ -29,3 +29,7 @@
   - Added the ability to move and jump while on the ground.
 - proto-9:
   - Hitting the A button while climbing now takes you off of the wall.
+- proto-10:
+  - There are now areas on the wall where the player cannot climb.
+  - Pressing the B button to grab the wall when over these zones has no effect.
+  - Attempting to climb onto these no-climbing zones will stop you at the border.
