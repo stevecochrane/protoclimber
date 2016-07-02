@@ -258,7 +258,7 @@ class Player extends FlxSprite {
     }
 
     private function pressedRight():Void {
-        if (isClimbing && !isGrabbingTheWall && overlapsAt(x + width + climbOffset, y, Groups.climbZones)) {
+        if (isClimbing && !isGrabbingTheWall && overlapsAt(x + width - climbOffset, y, Groups.climbZones)) {
             if (velocity.x <= baseMoveVelocity) {
                 velocity.x = baseMoveVelocity;
             }
