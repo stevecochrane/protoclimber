@@ -164,6 +164,11 @@ class Player extends FlxSprite {
                 isGrabbingTheWallDelayTimer = 0;
             }
         }
+
+        if (stamina <= 0 && isClimbing) {
+            lockedVelocityX = velocity.x;
+            isClimbing = false;
+        }
     }
 
     private function updateGamepadInput(gamepad:FlxGamepad):Void {
