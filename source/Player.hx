@@ -121,7 +121,9 @@ class Player extends FlxSprite {
 
         super.update(elapsed);
 
-        staminaTimer += elapsed;
+        if (isOnGround) {
+            staminaTimer += elapsed;
+        }
 
         if (staminaTimer >= 0.2) {
             staminaTimer = 0;
