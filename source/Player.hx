@@ -78,6 +78,8 @@ class Player extends FlxSprite {
 
         climbOffset = 8;
 
+        FlxG.watch.add(this, "x", "x");
+        FlxG.watch.add(this, "y", "y");
         FlxG.watch.add(this, "charge", "charge");
         FlxG.watch.add(this, "stamina", "stamina");
         FlxG.watch.add(this, "touching", "touching");
