@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="45" tilewidth="16" tileheight="16" nextobjectid="262">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="45" tilewidth="16" tileheight="16" nextobjectid="265">
  <properties>
   <property name="tileset" value="protoclimber"/>
  </properties>
@@ -12,7 +12,7 @@
    <property name="tileset" value="protoclimber"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0iEOACAMA8Ci9v8f41EYsgDX5GxrWkkKAOATa0502tjfGI/o/jUAd5oZsBy4
+   eJzt0rEKACAIQEGb/P8/bo+GQBySE25+CmZEJAB87DYasxtnp7Jf180ab401RMePAzDfBo/0G/Q=
   </data>
  </layer>
  <layer name="foreground" width="25" height="45">
@@ -20,7 +20,7 @@
    <property name="tileset" value="protoclimber"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0rEJACAQBEFRjO2/W23AD+Q1kBnY+JIrBQAAAM61Vd2UpQdlGQ82op1sP2/s/nZa9K+bTfnjAZE=
+   eJzt1TsKACAMREHxU+v9T6ulhCgiSaNvYNtsE9gQAADAL9JInJIdOooSa1Xcbw4dAIBzcl/mWNH2xXpn5L54bdmqx9rLHat/u83uvzzTAfDcAeU=
   </data>
  </layer>
  <objectgroup name="screen_grid" opacity="0.14">
@@ -30,7 +30,9 @@
  </objectgroup>
  <objectgroup name="objects">
   <object id="256" type="climb_zone" x="0" y="464" width="400" height="224"/>
-  <object id="259" type="climb_zone" x="-7.10543e-15" y="0" width="400" height="368"/>
+  <object id="259" type="climb_zone" x="-7.10543e-15" y="0" width="400" height="272"/>
   <object id="260" type="climb_zone" x="64" y="368.333" width="272" height="64"/>
+  <object id="262" type="climb_zone" x="0" y="272" width="160" height="96"/>
+  <object id="263" type="climb_zone" x="240" y="272" width="160" height="96"/>
  </objectgroup>
 </map>
