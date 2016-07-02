@@ -126,7 +126,7 @@ class Player extends FlxSprite {
         if (staminaTimer >= 0.2) {
             staminaTimer = 0;
             if (isOnGround && stamina < 100) {
-                stamina += 5;
+                stamina += 10;
             }
             if (isClimbing && stamina > 0) {
                 stamina -= 1;
