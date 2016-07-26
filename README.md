@@ -33,3 +33,7 @@
   - There are now areas on the wall where the player cannot climb.
   - Pressing the B button to grab the wall when over these zones has no effect.
   - Attempting to climb onto these no-climbing zones will stop you at the border.
+- proto-11:
+  - Stamina is now only restored when on the ground, and the rate of stamina gain has increased.
+  - Stamina now gradually decreases when climbing the wall, even when not boosting.
+  - If you run out of stamina while climbing you now fall off the wall.
