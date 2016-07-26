@@ -326,12 +326,20 @@ class Player extends FlxSprite {
 
     private function snapToGrid():Void {
         var xRounded:Int = Math.round(x);
-        var gridOffset:Int = xRounded % 16;
+        var yRounded:Int = Math.round(y);
+        var xGridOffset:Int = xRounded % 16;
+        var yGridOffset:Int = yRounded % 16;
 
-        if (gridOffset < 8) {
-            x = xRounded - gridOffset;
+        if (xGridOffset < 8) {
+            x = xRounded - xGridOffset;
         } else {
-            x = xRounded - gridOffset + 16;
+            x = xRounded - xGridOffset + 16;
+        }
+
+        if (yGridOffset < 8) {
+            y = yRounded - yGridOffset;
+        } else {
+            y = yRounded - yGridOffset + 16;
         }
     }
 
