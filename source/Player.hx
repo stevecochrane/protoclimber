@@ -221,10 +221,29 @@ class Player extends FlxSprite {
 
     }
 
-    private function justPressedUp():Void {}
-    private function justPressedDown():Void {}
-    private function justPressedRight():Void {}
-    private function justPressedLeft():Void {}
+    private function justPressedUp():Void {
+        if (isClimbing && !isGrabbingTheWall && overlapsAt(x, y - height + climbOffset, Groups.climbZones)) {
+            y -= 16;
+        }
+    }
+
+    private function justPressedDown():Void {
+        if (isClimbing && !isGrabbingTheWall && overlapsAt(x, y - height + climbOffset, Groups.climbZones)) {
+            y += 16;
+        }
+    }
+
+    private function justPressedRight():Void {
+        if (isClimbing && !isGrabbingTheWall && overlapsAt(x + width - climbOffset, y, Groups.climbZones)) {
+            x += 16;
+        }
+    }
+
+    private function justPressedLeft():Void {
+        if (isClimbing && !isGrabbingTheWall && overlapsAt(x - climbOffset, y, Groups.climbZones)) {
+            x -= 16;
+        }
+    }
 
     private function justPressedB():Void {
         if (isClimbing) {
@@ -249,38 +268,17 @@ class Player extends FlxSprite {
         }
     }
 
-    private function pressedUp():Void {
-        if (isClimbing && !isGrabbingTheWall && overlapsAt(x, y - height + climbOffset, Groups.climbZones)) {
-            if (velocity.y >= -baseMoveVelocity) {
-                velocity.y = -baseMoveVelocity;
-            }
-        }
-    }
-
-    private function pressedDown():Void {
-        if (isClimbing && !isGrabbingTheWall && overlapsAt(x, y + climbOffset, Groups.climbZones)) {
-            if (velocity.y <= baseMoveVelocity) {
-                velocity.y = baseMoveVelocity;
-            }
-        }
-    }
+    private function pressedUp():Void {}
+    private function pressedDown():Void {}
 
     private function pressedRight():Void {
-        if (isClimbing && !isGrabbingTheWall && overlapsAt(x + width - climbOffset, y, Groups.climbZones)) {
-            if (velocity.x <= baseMoveVelocity) {
-                velocity.x = baseMoveVelocity;
-            }
-        } else if (isOnGround) {
+        if (isOnGround) {
             velocity.x = baseRunVelocity;
         }
     }
 
     private function pressedLeft():Void {
-        if (isClimbing && !isGrabbingTheWall && overlapsAt(x - climbOffset, y, Groups.climbZones)) {
-            if (velocity.x >= -baseMoveVelocity) {
-                velocity.x = -baseMoveVelocity;
-            }
-        } else if (isOnGround) {
+        if (isOnGround) {
             velocity.x = -baseRunVelocity;
         }
     }
