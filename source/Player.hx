@@ -254,6 +254,7 @@ class Player extends FlxSprite {
                 isClimbing = true;
                 isGrabbingTheWall = true;
                 isOnGround = false;
+                snapToGrid();
             }
         }
     }
@@ -320,6 +321,17 @@ class Player extends FlxSprite {
                 isClimbing = false;
             }
             charge = 0;
+        }
+    }
+
+    private function snapToGrid():Void {
+        var xRounded:Int = Math.round(x);
+        var gridOffset:Int = xRounded % 16;
+
+        if (gridOffset < 8) {
+            x = xRounded - gridOffset;
+        } else {
+            x = xRounded - gridOffset + 16;
         }
     }
 
