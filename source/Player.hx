@@ -28,7 +28,8 @@ class Player extends FlxSprite {
     private var isGrabbingTheWallDelayTimer:Float;
     private var isOnGround:Bool;
     private var lockedVelocityX:Float;
-    private var staminaTimer:Float;
+    private var staminaDrainTimer:Float;
+    private var staminaRechargeTimer:Float;
     private var velocityFactor:Float;
 
     public function new(X:Float, Y:Float) {
@@ -62,7 +63,8 @@ class Player extends FlxSprite {
         height = 24;
 
         stamina = 100;
-        staminaTimer = 0;
+        staminaDrainTimer = 0;
+        staminaRechargeTimer = 0;
 
         charge = 0;
         chargeTimer = 0;
@@ -121,15 +123,20 @@ class Player extends FlxSprite {
 
         super.update(elapsed);
 
-        staminaTimer += elapsed;
+        staminaDrainTimer += elapsed;
+        staminaRechargeTimer += elapsed;
 
-        if (staminaTimer >= 0.2) {
-            staminaTimer = 0;
+        if (staminaRechargeTimer >= 0.25) {
+            staminaRechargeTimer = 0;
             if (isOnGround && stamina < 100) {
                 stamina += 10;
             }
+        }
+
+        if (staminaDrainTimer >= 1) {
+            staminaDrainTimer = 0;
             if (isClimbing && stamina > 0) {
-                /*stamina -= 1;*/
+                stamina -= 1;
             }
         }
 
