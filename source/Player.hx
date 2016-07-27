@@ -129,7 +129,7 @@ class Player extends FlxSprite {
                 stamina += 10;
             }
             if (isClimbing && stamina > 0) {
-                stamina -= 1;
+                /*stamina -= 1;*/
             }
         }
 
@@ -224,24 +224,28 @@ class Player extends FlxSprite {
     private function justPressedUp():Void {
         if (isClimbing && !isGrabbingTheWall && overlapsAt(x, y - height + climbOffset, Groups.climbZones)) {
             y -= 16;
+            stamina -= 5;
         }
     }
 
     private function justPressedDown():Void {
         if (isClimbing && !isGrabbingTheWall && overlapsAt(x, y - height + climbOffset, Groups.climbZones)) {
             y += 16;
+            stamina -= 5;
         }
     }
 
     private function justPressedRight():Void {
         if (isClimbing && !isGrabbingTheWall && overlapsAt(x + width - climbOffset, y, Groups.climbZones)) {
             x += 16;
+            stamina -= 5;
         }
     }
 
     private function justPressedLeft():Void {
         if (isClimbing && !isGrabbingTheWall && overlapsAt(x - climbOffset, y, Groups.climbZones)) {
             x -= 16;
+            stamina -= 5;
         }
     }
 
