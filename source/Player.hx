@@ -152,6 +152,7 @@ class Player extends FlxSprite {
             velocity.x = lockedVelocityX;
         } else {
             acceleration.y = 0;
+            velocity.y = 0;
         }
 
         if (isGrabbingTheWall) {
@@ -260,8 +261,12 @@ class Player extends FlxSprite {
         } else {
             if (overlaps(Groups.climbZones)) {
                 isClimbing = true;
-                isGrabbingTheWall = true;
+                /*isGrabbingTheWall = true;*/
                 isOnGround = false;
+
+                acceleration.y = 0;
+                velocity.y = 0;
+
                 snapToGrid();
             }
         }
