@@ -19,7 +19,6 @@ class Player extends FlxSprite {
     private var baseJumpVelocity:Float;
     private var baseRunVelocity:Float;
     private var chargeTimer:Float;
-    private var climbOffset:Float;
     private var gamepad:FlxGamepad;
     private var isCharging:Bool;
     private var isClimbing:Bool;
@@ -77,8 +76,6 @@ class Player extends FlxSprite {
         isGrabbingTheWallDelayTimer = 0;
 
         isOnGround = false;
-
-        climbOffset = 8;
 
         FlxG.watch.add(this, "x", "x");
         FlxG.watch.add(this, "y", "y");
@@ -229,28 +226,28 @@ class Player extends FlxSprite {
     }
 
     private function justPressedUp():Void {
-        if (isClimbing && !isGrabbingTheWall && overlapsAt(x, y - height + climbOffset, Groups.climbZones)) {
+        if (isClimbing && !isGrabbingTheWall && overlapsAt(x, y - 16, Groups.climbZones)) {
             y -= 16;
             stamina -= 5;
         }
     }
 
     private function justPressedDown():Void {
-        if (isClimbing && !isGrabbingTheWall && overlapsAt(x, y - height + climbOffset, Groups.climbZones)) {
+        if (isClimbing && !isGrabbingTheWall && overlapsAt(x, y + 16, Groups.climbZones)) {
             y += 16;
             stamina -= 5;
         }
     }
 
     private function justPressedRight():Void {
-        if (isClimbing && !isGrabbingTheWall && overlapsAt(x + width - climbOffset, y, Groups.climbZones)) {
+        if (isClimbing && !isGrabbingTheWall && overlapsAt(x + 16, y, Groups.climbZones)) {
             x += 16;
             stamina -= 5;
         }
     }
 
     private function justPressedLeft():Void {
-        if (isClimbing && !isGrabbingTheWall && overlapsAt(x - climbOffset, y, Groups.climbZones)) {
+        if (isClimbing && !isGrabbingTheWall && overlapsAt(x - 16, y, Groups.climbZones)) {
             x -= 16;
             stamina -= 5;
         }
@@ -341,13 +338,13 @@ class Player extends FlxSprite {
         var xGridOffset:Int = xRounded % 16;
         var yGridOffset:Int = yRounded % 16;
 
-        if (xGridOffset < 8) {
+        if (xGridOffset <= 8) {
             x = xRounded - xGridOffset;
         } else {
             x = xRounded - xGridOffset + 16;
         }
 
-        if (yGridOffset < 8) {
+        if (yGridOffset <= 8) {
             y = yRounded - yGridOffset;
         } else {
             y = yRounded - yGridOffset + 16;
