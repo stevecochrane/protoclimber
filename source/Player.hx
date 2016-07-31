@@ -346,32 +346,16 @@ class Player extends FlxSprite {
         var xGridOffset:Int = xRounded % 16;
         var yGridOffset:Int = yRounded % 16;
 
-        if (xGridOffset <= 8) {
-            if (overlapsAt(xRounded - xGridOffset - 1, y, Groups.climbZones)) {
-                x = xRounded - xGridOffset;
-            } else {
-                x = xRounded - xGridOffset + 16;
-            }
-        } else {
-            if (overlapsAt(xRounded - xGridOffset + 16 + 1, y, Groups.climbZones)) {
-                x = xRounded - xGridOffset + 16;
-            } else {
-                x = xRounded - xGridOffset;
-            }
+        if (xGridOffset <= 8 && overlapsAt(xRounded - xGridOffset - 1, y, Groups.climbZones)) {
+            x = xRounded - xGridOffset;
+        } else if (xGridOffset >= 8 && overlapsAt(xRounded - xGridOffset + 16 + 1, y, Groups.climbZones)) {
+            x = xRounded - xGridOffset + 16;
         }
 
-        if (yGridOffset <= 8) {
-            if (overlapsAt(x, yRounded - yGridOffset - 1, Groups.climbZones)) {
-                y = yRounded - yGridOffset;
-            } else {
-                y = yRounded - yGridOffset + 16;
-            }
-        } else {
-            if (overlapsAt(x, yRounded - yGridOffset + 16 + 1, Groups.climbZones)) {
-                y = yRounded - yGridOffset + 16;
-            } else {
-                y = yRounded - yGridOffset;
-            }
+        if (yGridOffset <= 8 && overlapsAt(yRounded - yGridOffset - 1, y, Groups.climbZones)) {
+            y = yRounded - yGridOffset;
+        } else if (yGridOffset >= 8 && overlapsAt(yRounded - yGridOffset + 16 + 1, y, Groups.climbZones)) {
+            y = yRounded - yGridOffset + 16;
         }
     }
 
