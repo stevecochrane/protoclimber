@@ -343,9 +343,9 @@ class Player extends FlxSprite {
         var xGridOffset:Int = xRounded % 16;
         var yGridOffset:Int = yRounded % 16;
 
-        if (xGridOffset <= 8) {
+        if (xGridOffset <= 8 && overlapsAt(xRounded - xGridOffset, y, Groups.climbZones)) {
             x = xRounded - xGridOffset;
-        } else {
+        } else if (overlapsAt(xRounded - xGridOffset + 16, y, Groups.climbZones)) {
             x = xRounded - xGridOffset + 16;
         }
 
