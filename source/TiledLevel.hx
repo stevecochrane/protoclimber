@@ -70,6 +70,8 @@ class TiledLevel extends TiledMap {
             var processedPath = PATH_LEVEL_TILESETS + imagePath.file + "." + imagePath.ext;
 
             var tilemap:FlxTilemap = new FlxTilemap();
+            //  TODO: Keep an eye on this one as it seems temporary, but this fixed an issue where sprites would occasionally be 1px off from the tilemap.
+            tilemap.useScaleHack = false;
             tilemap.loadMapFromArray(tileLayer.tileArray, width, height, processedPath, tiledTileset.tileWidth, tiledTileset.tileHeight, OFF, tiledTileset.firstGID, 1, 1);
 
             if (tileLayer.properties.contains("nocollide")) {
