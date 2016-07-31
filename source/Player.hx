@@ -77,6 +77,9 @@ class Player extends FlxSprite {
 
         isOnGround = false;
 
+        pixelPerfectPosition = true;
+        pixelPerfectRender = true;
+
         FlxG.watch.add(this, "x", "x");
         FlxG.watch.add(this, "y", "y");
         FlxG.watch.add(this, "charge", "charge");
