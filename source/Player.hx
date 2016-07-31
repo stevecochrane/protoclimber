@@ -230,7 +230,7 @@ class Player extends FlxSprite {
     }
 
     private function justPressedUp():Void {
-        if (isClimbing && !isGrabbingTheWall && overlapsAt(x, y - 16 - 1, Groups.climbZones)) {
+        if (isClimbing && !isGrabbingTheWall && overlapsAt(x, y - 24 - 1, Groups.climbZones)) {
             y -= 16;
             stamina -= 5;
         }
@@ -352,9 +352,9 @@ class Player extends FlxSprite {
             x = xRounded - xGridOffset + 16;
         }
 
-        if (yGridOffset <= 8 && overlapsAt(yRounded - yGridOffset - 1, y, Groups.climbZones)) {
+        if (yGridOffset <= 8 && overlapsAt(x, yRounded - yGridOffset - 1, Groups.climbZones)) {
             y = yRounded - yGridOffset;
-        } else if (yGridOffset >= 8 && overlapsAt(yRounded - yGridOffset + 16 + 1, y, Groups.climbZones)) {
+        } else if (yGridOffset >= 8 && overlapsAt(x, yRounded - yGridOffset + 16 + 1, Groups.climbZones)) {
             y = yRounded - yGridOffset + 16;
         }
     }
