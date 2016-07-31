@@ -12,7 +12,7 @@
    <property name="tileset" value="protoclimber"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0rEKACAIQEGb/P8/bo+GQBySE25+CmZEJAB87DYasxtnp7Jf180ab401RMePAzDfBo/0G/Q=
+   eJzt0jEKACAMBMFLlf//2F4sQiQSwx5MJ6yCLskBAPjYaTRmN/bOzf2q3kwj1rAhKv44kF3XRvS80XjSiK5rY4oFzu0aAg==
   </data>
  </layer>
  <layer name="foreground" width="25" height="45">
@@ -29,7 +29,7 @@
   <object id="253" x="0" y="480" width="400" height="240"/>
  </objectgroup>
  <objectgroup name="objects">
-  <object id="256" type="climb_zone" x="0" y="464" width="400" height="224"/>
+  <object id="256" type="climb_zone" x="40" y="600" width="144" height="48"/>
   <object id="259" type="climb_zone" x="-7.10543e-15" y="0" width="400" height="272"/>
   <object id="260" type="climb_zone" x="64" y="368.333" width="272" height="64"/>
   <object id="262" type="climb_zone" x="0" y="272" width="160" height="96"/>
