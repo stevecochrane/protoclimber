@@ -37,3 +37,7 @@
   - Stamina is now only restored when on the ground, and the rate of stamina gain has increased.
   - Stamina now gradually decreases when climbing the wall, even when not boosting.
   - If you run out of stamina while climbing you now fall off the wall.
+- proto-12:
+  - Climbing movement is now grid-based. Pressing an arrow key while climbing will move you one tile in that direction.
+  - When grabbing on to the wall you are now snapped to the tile grid.
+  - Stamina is now drained with each move. It also continues to drain even when still, but this idle stamina drain is now much slower.
