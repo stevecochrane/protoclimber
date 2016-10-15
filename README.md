@@ -5,42 +5,42 @@
   - Hold Up to move up or Down to move down with each Z or X button press.
   - Inspired by the movement of Toobin'.
   - It's nice how this mirrors the left and right hands, but being able to hold one direction and move in the other direction seems wrong.
-- proto-2:
+- proto-2
   - Hold a direction and press X to move in that direction. Z has no effect now.
   - Loses the feeling of using two hands, but much easier to mentally grasp, and frees up the Z button for something else.
-- proto-3:
+- proto-3
   - Adds a stamina bar that depletes with each button press, and regenerates slowly over time.
   - Inspired by the temperature meter in Excitebike.
   - At the moment it's too easy to get stuck and this should really regenerate faster if it stays.
   - This would also need some polish like a visual indication that your character is too tired to move.
-- proto-4:
+- proto-4
   - Adds a charged jump mechanic, where if you hold the jump button down, a new meter is charged, and at a full charge the jump is twice as strong.
-- proto-5:
+- proto-5
   - Adds the ability to slowly climb in any direction by holding down that direction.
   - Moving in bursts or with the charged jump now consumes more stamina as a result (and arguably should consume even more).
-- proto-6:
+- proto-6
   - Adds the ability to grab onto and let go of the wall with the B button.
   - Since there is no ground movement yet, all you can do once you've let go is grab onto the wall again.
   - The player now maintains their current X velocity from when they let go of the wall until they hit the ground.
-- proto-7:
+- proto-7
   - To this point, the player could immediately start moving in a direction as soon as they grab on to the wall, which doesn't feel right.
   - Now after grabbing the wall, directional controls are non-functional until a short time after the player has stopped sliding down.
-- proto-8:
+- proto-8
   - Added the ability to move and jump while on the ground.
-- proto-9:
+- proto-9
   - Hitting the A button while climbing now takes you off of the wall.
-- proto-10:
+- proto-10
   - There are now areas on the wall where the player cannot climb.
   - Pressing the B button to grab the wall when over these zones has no effect.
   - Attempting to climb onto these no-climbing zones will stop you at the border.
-- proto-11:
+- proto-11
   - Stamina is now only restored when on the ground, and the rate of stamina gain has increased.
   - Stamina now gradually decreases when climbing the wall, even when not boosting.
   - If you run out of stamina while climbing you now fall off the wall.
-- proto-12:
+- proto-12
   - Climbing movement is now grid-based. Pressing an arrow key while climbing will move you one tile in that direction.
   - When grabbing on to the wall you are now snapped to the tile grid.
   - Stamina is now drained with each move. It also continues to drain even when still, but this idle stamina drain is now much slower.
-- proto-13:
+- proto-13
   - The player now has air control, just like on the ground.
   - The air control implementation isn't sophisticated yet so it's overriding the charged jump's horizontal movement, so that will need refinement later.
