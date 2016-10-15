@@ -152,7 +152,7 @@ class Player extends FlxSprite {
 
         if (!isClimbing) {
             acceleration.y = accelerationGravity;
-            velocity.x = lockedVelocityX;
+            // velocity.x = lockedVelocityX;
         } else {
             acceleration.y = 0;
             velocity.y = 0;
@@ -289,13 +289,15 @@ class Player extends FlxSprite {
     private function pressedDown():Void {}
 
     private function pressedRight():Void {
-        if (isOnGround) {
+        // if (isOnGround) {
+        if (!isClimbing) {
             velocity.x = baseRunVelocity;
         }
     }
 
     private function pressedLeft():Void {
-        if (isOnGround) {
+        // if (isOnGround) {
+        if (!isClimbing) {
             velocity.x = -baseRunVelocity;
         }
     }
