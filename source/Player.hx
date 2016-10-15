@@ -53,13 +53,16 @@ class Player extends FlxSprite {
         drag.x = 800;
         drag.y = 800;
 
-        makeGraphic(16, 24, FlxColor.WHITE);
+        loadGraphic(Assets.IMG_PLAYER, true, 48, 72);
 
         setFacingFlip(FlxObject.LEFT, true, false);
         setFacingFlip(FlxObject.RIGHT, false, false);
 
         width = 16;
         height = 24;
+
+        offset.x = 16;
+        offset.y = 24;
 
         stamina = 100;
         staminaDrainTimer = 0;
@@ -79,6 +82,8 @@ class Player extends FlxSprite {
 
         pixelPerfectPosition = true;
         pixelPerfectRender = true;
+
+        animation.add("idle", [0]);
 
         FlxG.watch.add(this, "x", "x");
         FlxG.watch.add(this, "y", "y");
@@ -177,6 +182,8 @@ class Player extends FlxSprite {
             lockedVelocityX = velocity.x;
             isClimbing = false;
         }
+
+        animation.play("idle");
     }
 
     private function updateGamepadInput(gamepad:FlxGamepad):Void {
