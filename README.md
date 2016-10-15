@@ -41,3 +41,6 @@
   - Climbing movement is now grid-based. Pressing an arrow key while climbing will move you one tile in that direction.
   - When grabbing on to the wall you are now snapped to the tile grid.
   - Stamina is now drained with each move. It also continues to drain even when still, but this idle stamina drain is now much slower.
+- proto-13:
+  - The player now has air control, just like on the ground.
+  - The air control implementation isn't sophisticated yet so it's overriding the charged jump's horizontal movement, so that will need refinement later.
