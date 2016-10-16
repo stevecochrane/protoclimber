@@ -21,11 +21,11 @@ class Player extends FlxSprite {
     private var chargeTimer:Float;
     private var gamepad:FlxGamepad;
     private var isCharging:Bool;
-    private var isOnWall:Bool;
     private var isGrabbingTheWall:Bool;
     private var isGrabbingTheWallDelayActive:Bool;
     private var isGrabbingTheWallDelayTimer:Float;
     private var isOnGround:Bool;
+    private var isOnWall:Bool;
     private var lockedVelocityX:Float;
     private var staminaDrainTimer:Float;
     private var staminaRechargeTimer:Float;
