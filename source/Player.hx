@@ -19,7 +19,11 @@ class Player extends FlxSprite {
     private var baseJumpVelocity:Float;
     private var baseRunVelocity:Float;
     private var chargeTimer:Float;
+    private var climbingDirection:Int;
+    private var currentAnimation:String;
     private var gamepad:FlxGamepad;
+    private var isClimbingWindup:Bool;
+    private var isClimbingWinddown:Bool;
     private var isCharging:Bool;
     private var isGrabbingTheWall:Bool;
     private var isGrabbingTheWallDelayActive:Bool;
@@ -30,6 +34,8 @@ class Player extends FlxSprite {
     private var staminaDrainTimer:Float;
     private var staminaRechargeTimer:Float;
     private var velocityFactor:Float;
+    private var windupTimer:Float;
+    private var winddownTimer:Float;
 
     public function new(X:Float, Y:Float) {
 
@@ -80,6 +86,13 @@ class Player extends FlxSprite {
 
         isOnGround = false;
 
+        isClimbingWindup = false;
+        isClimbingWinddown = false;
+        windupTimer = 0;
+        winddownTimer = 0;
+
+        currentAnimation = "idle";
+
         pixelPerfectPosition = true;
         pixelPerfectRender = true;
 
@@ -102,23 +115,26 @@ class Player extends FlxSprite {
         animation.add("windupUpLeft",      [4]);
         animation.add("winddownUpLeft",    [8]);
 
-        FlxG.watch.add(this, "x", "x");
-        FlxG.watch.add(this, "y", "y");
-        FlxG.watch.add(this, "charge", "charge");
-        FlxG.watch.add(this, "stamina", "stamina");
-        FlxG.watch.add(this, "touching", "touching");
-        FlxG.watch.add(this.acceleration, "x", "acceleration.x");
-        FlxG.watch.add(this.acceleration, "y", "acceleration.y");
-        FlxG.watch.add(this.maxVelocity, "x", "maxVelocity.x");
-        FlxG.watch.add(this.maxVelocity, "y", "maxVelocity.y");
-        FlxG.watch.add(this.velocity, "x", "velocity.x");
-        FlxG.watch.add(this.velocity, "y", "velocity.y");
+        // FlxG.watch.add(this, "x", "x");
+        // FlxG.watch.add(this, "y", "y");
+        // FlxG.watch.add(this, "charge", "charge");
+        // FlxG.watch.add(this, "stamina", "stamina");
+        // FlxG.watch.add(this, "touching", "touching");
+        // FlxG.watch.add(this.acceleration, "x", "acceleration.x");
+        // FlxG.watch.add(this.acceleration, "y", "acceleration.y");
+        // FlxG.watch.add(this.maxVelocity, "x", "maxVelocity.x");
+        // FlxG.watch.add(this.maxVelocity, "y", "maxVelocity.y");
+        // FlxG.watch.add(this.velocity, "x", "velocity.x");
+        // FlxG.watch.add(this.velocity, "y", "velocity.y");
         FlxG.watch.add(this, "isOnWall", "isOnWall");
-        FlxG.watch.add(this, "isGrabbingTheWall", "isGrabbingTheWall");
-        FlxG.watch.add(this, "isGrabbingTheWallDelayActive", "isGrabbingTheWallDelayActive");
-        FlxG.watch.add(this, "isGrabbingTheWallDelayTimer", "isGrabbingTheWallDelayTimer");
+        // FlxG.watch.add(this, "isGrabbingTheWall", "isGrabbingTheWall");
+        // FlxG.watch.add(this, "isGrabbingTheWallDelayActive", "isGrabbingTheWallDelayActive");
+        // FlxG.watch.add(this, "isGrabbingTheWallDelayTimer", "isGrabbingTheWallDelayTimer");
         FlxG.watch.add(this, "isOnGround", "isOnGround");
-
+        FlxG.watch.add(this, "isClimbingWindup", "isClimbingWindup");
+        FlxG.watch.add(this, "isClimbingWinddown", "isClimbingWinddown");
+        FlxG.watch.add(this, "windupTimer", "windupTimer");
+        FlxG.watch.add(this, "winddownTimer", "winddownTimer");
     }
 
     override public function destroy():Void {
@@ -200,7 +216,28 @@ class Player extends FlxSprite {
             isOnWall = false;
         }
 
-        animation.play("idle");
+        if (isClimbingWindup) {
+            windupTimer += elapsed;
+            currentAnimation = "windupUp";
+            if (windupTimer >= 0.2) {
+                isClimbingWindup = false;
+                windupTimer = 0;
+                moveInDirection(climbingDirection);
+            }
+        }
+
+        if (isClimbingWinddown) {
+            winddownTimer += elapsed;
+            currentAnimation = "winddownUp";
+            if (winddownTimer >= 0.2) {
+                isClimbingWinddown = false;
+                winddownTimer = 0;
+                currentAnimation = "idle";
+            }
+        }
+
+        animation.play(currentAnimation);
+        currentAnimation = "idle";
     }
 
     private function updateGamepadInput(gamepad:FlxGamepad):Void {
@@ -255,8 +292,13 @@ class Player extends FlxSprite {
 
     private function justPressedUp():Void {
         if (isOnWall && !isGrabbingTheWall && overlapsAt(x, y - 24 - 1, Groups.climbZones)) {
-            y -= 16;
-            stamina -= 5;
+            // For instant movement
+            // y -= 16;
+            // stamina -= 5;
+
+            // For timed movement
+            isClimbingWindup = true;
+            climbingDirection = Direction.UP;
         }
     }
 
@@ -383,6 +425,15 @@ class Player extends FlxSprite {
         } else if (yGridOffset >= 8 && overlapsAt(x, yRounded - yGridOffset + 16 + 1, Groups.climbZones)) {
             y = yRounded - yGridOffset + 16;
         }
+    }
+
+    private function moveInDirection(theDirection:Int):Void {
+        FlxG.log.add("Let's go in this direction: " + theDirection);
+        // Just assume we're only going up for now
+        y -= 16;
+        stamina -= 5;
+        currentAnimation = "winddownUp";
+        isClimbingWinddown = true;
     }
 
 }
