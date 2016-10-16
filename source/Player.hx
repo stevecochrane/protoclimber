@@ -470,21 +470,15 @@ class Player extends FlxSprite {
         switch(theDirection) {
             case Direction.UP:
                 y -= 16;
-                stamina -= 5;
-
             case Direction.RIGHT:
                 x += 16;
-                stamina -= 5;
-
             case Direction.DOWN:
                 y += 16;
-                stamina -= 5;
-
             case Direction.LEFT:
                 x -= 16;
-                stamina -= 5;
         }
 
+        stamina -= 5;
         currentAnimation = "winddownUp";
         isClimbingWinddown = true;
     }
