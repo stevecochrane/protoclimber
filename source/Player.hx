@@ -85,6 +85,23 @@ class Player extends FlxSprite {
 
         animation.add("idle", [0]);
 
+        animation.add("windupUp",          [5]);
+        animation.add("winddownUp",        [1]);
+        animation.add("windupUpRight",     [6]);
+        animation.add("winddownUpRight",   [2]);
+        animation.add("windupRight",       [7]);
+        animation.add("winddownRight",     [3]);
+        animation.add("windupDownRight",   [8]);
+        animation.add("winddownDownRight", [4]);
+        animation.add("windupDown",        [1]);
+        animation.add("winddownDown",      [5]);
+        animation.add("windupDownLeft",    [2]);
+        animation.add("winddownDownLeft",  [6]);
+        animation.add("windupLeft",        [3]);
+        animation.add("winddownLeft",      [7]);
+        animation.add("windupUpLeft",      [4]);
+        animation.add("winddownUpLeft",    [8]);
+
         FlxG.watch.add(this, "x", "x");
         FlxG.watch.add(this, "y", "y");
         FlxG.watch.add(this, "charge", "charge");
