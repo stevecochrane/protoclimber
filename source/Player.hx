@@ -241,12 +241,20 @@ class Player extends FlxSprite {
             switch(climbingDirection) {
                 case Direction.UP:
                     currentAnimation = "windupUp";
+                case Direction.UP_RIGHT:
+                    currentAnimation = "windupUpRight";
                 case Direction.RIGHT:
                     currentAnimation = "windupRight";
+                case Direction.DOWN_RIGHT:
+                    currentAnimation = "windupDownRight";
                 case Direction.DOWN:
                     currentAnimation = "windupDown";
+                case Direction.DOWN_LEFT:
+                    currentAnimation = "windupDownLeft";
                 case Direction.LEFT:
                     currentAnimation = "windupLeft";
+                case Direction.UP_LEFT:
+                    currentAnimation = "windupUpLeft";
             }
 
             if (windupTimer >= 0.2) {
@@ -262,12 +270,20 @@ class Player extends FlxSprite {
             switch(climbingDirection) {
                 case Direction.UP:
                     currentAnimation = "winddownUp";
+                case Direction.UP_RIGHT:
+                    currentAnimation = "winddownUpRight";
                 case Direction.RIGHT:
                     currentAnimation = "winddownRight";
+                case Direction.DOWN_RIGHT:
+                    currentAnimation = "winddownDownRight";
                 case Direction.DOWN:
                     currentAnimation = "winddownDown";
+                case Direction.DOWN_LEFT:
+                    currentAnimation = "winddownDownLeft";
                 case Direction.LEFT:
                     currentAnimation = "winddownLeft";
+                case Direction.UP_LEFT:
+                    currentAnimation = "winddownUpLeft";
             }
 
             if (winddownTimer >= 0.2) {
