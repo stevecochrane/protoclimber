@@ -331,12 +331,16 @@ class Player extends FlxSprite {
         if (FlxG.keys.anyJustPressed(KeyMappings.getB()))          { justPressedB();      }
         if (FlxG.keys.anyJustPressed(KeyMappings.getA()))          { justPressedA();      }
 
-        if (FlxG.keys.anyPressed(KeyMappings.getDPadUp()))         { pressedUp();         }
-        if (FlxG.keys.anyPressed(KeyMappings.getDPadDown()))       { pressedDown();       }
-        if (FlxG.keys.anyPressed(KeyMappings.getDPadRight()))      { pressedRight();      }
-        if (FlxG.keys.anyPressed(KeyMappings.getDPadLeft()))       { pressedLeft();       }
-        if (FlxG.keys.anyPressed(KeyMappings.getB()))              { pressedB();          }
-        if (FlxG.keys.anyPressed(KeyMappings.getA()))              { pressedA();          }
+        if (FlxG.keys.anyPressed(KeyMappings.getDPadUp())    && !FlxG.keys.anyPressed(KeyMappings.getDPadLeft())   && !FlxG.keys.anyPressed(KeyMappings.getDPadRight())) { pressedUp();        }
+        if (FlxG.keys.anyPressed(KeyMappings.getDPadUp())    &&  FlxG.keys.anyPressed(KeyMappings.getDPadRight()))                                                       { pressedUpRight();   }
+        if (FlxG.keys.anyPressed(KeyMappings.getDPadRight()) && !FlxG.keys.anyPressed(KeyMappings.getDPadUp())     && !FlxG.keys.anyPressed(KeyMappings.getDPadDown()))  { pressedRight();     }
+        if (FlxG.keys.anyPressed(KeyMappings.getDPadDown())  &&  FlxG.keys.anyPressed(KeyMappings.getDPadRight()))                                                       { pressedDownRight(); }
+        if (FlxG.keys.anyPressed(KeyMappings.getDPadDown())  && !FlxG.keys.anyPressed(KeyMappings.getDPadLeft())   && !FlxG.keys.anyPressed(KeyMappings.getDPadRight())) { pressedDown();      }
+        if (FlxG.keys.anyPressed(KeyMappings.getDPadDown())  &&  FlxG.keys.anyPressed(KeyMappings.getDPadLeft()))                                                        { pressedDownLeft();  }
+        if (FlxG.keys.anyPressed(KeyMappings.getDPadLeft())  && !FlxG.keys.anyPressed(KeyMappings.getDPadUp())     && !FlxG.keys.anyPressed(KeyMappings.getDPadDown()))  { pressedLeft();      }
+        if (FlxG.keys.anyPressed(KeyMappings.getDPadUp())    &&  FlxG.keys.anyPressed(KeyMappings.getDPadLeft()))                                                        { pressedUpLeft();    }
+        if (FlxG.keys.anyPressed(KeyMappings.getB()))                                                                                                                    { pressedB();         }
+        if (FlxG.keys.anyPressed(KeyMappings.getA()))                                                                                                                    { pressedA();         }
 
         if (FlxG.keys.anyJustReleased(KeyMappings.getDPadUp()))    { justReleasedUp();    }
         if (FlxG.keys.anyJustReleased(KeyMappings.getDPadDown()))  { justReleasedDown();  }
@@ -392,15 +396,15 @@ class Player extends FlxSprite {
         }
     }
 
-    private function pressedDown():Void {
-        if (isOnWall && !isGrabbingTheWall && !isClimbingWindup && !isClimbingWinddown && overlapsAt(x, y + 16 + 1, Groups.climbZones)) {
+    private function pressedUpRight():Void {
+        if (isOnWall && !isGrabbingTheWall && !isClimbingWindup && !isClimbingWinddown && overlapsAt(x, y - 24 - 1, Groups.climbZones)) {
             // For instant movement
-            // y += 16;
+            // y -= 16;
             // stamina -= 5;
 
             // For timed movement
             isClimbingWindup = true;
-            climbingDirection = Direction.DOWN;
+            climbingDirection = Direction.UP_RIGHT;
         }
     }
 
@@ -421,6 +425,42 @@ class Player extends FlxSprite {
         }
     }
 
+    private function pressedDownRight():Void {
+        if (isOnWall && !isGrabbingTheWall && !isClimbingWindup && !isClimbingWinddown && overlapsAt(x, y - 24 - 1, Groups.climbZones)) {
+            // For instant movement
+            // y -= 16;
+            // stamina -= 5;
+
+            // For timed movement
+            isClimbingWindup = true;
+            climbingDirection = Direction.DOWN_RIGHT;
+        }
+    }
+
+    private function pressedDown():Void {
+        if (isOnWall && !isGrabbingTheWall && !isClimbingWindup && !isClimbingWinddown && overlapsAt(x, y + 16 + 1, Groups.climbZones)) {
+            // For instant movement
+            // y += 16;
+            // stamina -= 5;
+
+            // For timed movement
+            isClimbingWindup = true;
+            climbingDirection = Direction.DOWN;
+        }
+    }
+
+    private function pressedDownLeft():Void {
+        if (isOnWall && !isGrabbingTheWall && !isClimbingWindup && !isClimbingWinddown && overlapsAt(x, y - 24 - 1, Groups.climbZones)) {
+            // For instant movement
+            // y -= 16;
+            // stamina -= 5;
+
+            // For timed movement
+            isClimbingWindup = true;
+            climbingDirection = Direction.DOWN_LEFT;
+        }
+    }
+
     private function pressedLeft():Void {
         // if (isOnGround) {
         if (!isOnWall) {
@@ -435,6 +475,18 @@ class Player extends FlxSprite {
             // For timed movement
             isClimbingWindup = true;
             climbingDirection = Direction.LEFT;
+        }
+    }
+
+    private function pressedUpLeft():Void {
+        if (isOnWall && !isGrabbingTheWall && !isClimbingWindup && !isClimbingWinddown && overlapsAt(x, y - 24 - 1, Groups.climbZones)) {
+            // For instant movement
+            // y -= 16;
+            // stamina -= 5;
+
+            // For timed movement
+            isClimbingWindup = true;
+            climbingDirection = Direction.UP_LEFT;
         }
     }
 
