@@ -258,7 +258,7 @@ class Player extends FlxSprite {
                     currentAnimation = "windupUpLeft";
             }
 
-            if (windupTimer >= 1) {
+            if (windupTimer >= 0.2) {
                 isClimbingWindup = false;
                 windupTimer = 0;
                 moveInDirection(climbingDirection);
@@ -500,28 +500,28 @@ class Player extends FlxSprite {
     }
 
     private function justReleasedUp():Void {
-        if (isClimbingWindup && climbingDirection == Direction.UP) {
+        if (isClimbingWindup) {
             isClimbingWindup = false;
             windupTimer = 0;
         }
     }
 
     private function justReleasedDown():Void {
-        if (isClimbingWindup && climbingDirection == Direction.DOWN) {
+        if (isClimbingWindup) {
             isClimbingWindup = false;
             windupTimer = 0;
         }
     }
 
     private function justReleasedRight():Void {
-        if (isClimbingWindup && climbingDirection == Direction.RIGHT) {
+        if (isClimbingWindup) {
             isClimbingWindup = false;
             windupTimer = 0;
         }
     }
 
     private function justReleasedLeft():Void {
-        if (isClimbingWindup && climbingDirection == Direction.LEFT) {
+        if (isClimbingWindup) {
             isClimbingWindup = false;
             windupTimer = 0;
         }
