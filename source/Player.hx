@@ -393,6 +393,10 @@ class Player extends FlxSprite {
     }
 
     private function pressedUpRight():Void {
+        if (!isOnWall) {
+            velocity.x = baseRunVelocity;
+        }
+
         if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x + 16 + 1, y - 16 - 1, Groups.climbZones)) {
             isClimbingWindup = true;
             climbingDirection = Direction.UP_RIGHT;
@@ -400,7 +404,6 @@ class Player extends FlxSprite {
     }
 
     private function pressedRight():Void {
-        // if (isOnGround) {
         if (!isOnWall) {
             velocity.x = baseRunVelocity;
         }
@@ -412,6 +415,10 @@ class Player extends FlxSprite {
     }
 
     private function pressedDownRight():Void {
+        if (!isOnWall) {
+            velocity.x = baseRunVelocity;
+        }
+
         if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x + 16 + 1, y + 16 + 1, Groups.climbZones)) {
             isClimbingWindup = true;
             climbingDirection = Direction.DOWN_RIGHT;
@@ -426,6 +433,10 @@ class Player extends FlxSprite {
     }
 
     private function pressedDownLeft():Void {
+        if (!isOnWall) {
+            velocity.x = -baseRunVelocity;
+        }
+
         if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x - 16 - 1, y + 16 + 1, Groups.climbZones)) {
             isClimbingWindup = true;
             climbingDirection = Direction.DOWN_LEFT;
@@ -433,7 +444,6 @@ class Player extends FlxSprite {
     }
 
     private function pressedLeft():Void {
-        // if (isOnGround) {
         if (!isOnWall) {
             velocity.x = -baseRunVelocity;
         }
@@ -445,6 +455,10 @@ class Player extends FlxSprite {
     }
 
     private function pressedUpLeft():Void {
+        if (!isOnWall) {
+            velocity.x = -baseRunVelocity;
+        }
+
         if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x - 16 - 1, y - 16 - 1, Groups.climbZones)) {
             isClimbingWindup = true;
             climbingDirection = Direction.UP_LEFT;
