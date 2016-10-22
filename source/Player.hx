@@ -500,31 +500,19 @@ class Player extends FlxSprite {
     }
 
     private function justReleasedUp():Void {
-        if (isClimbingWindup) {
-            isClimbingWindup = false;
-            windupTimer = 0;
-        }
+        cancelClimbingWindup();
     }
 
     private function justReleasedDown():Void {
-        if (isClimbingWindup) {
-            isClimbingWindup = false;
-            windupTimer = 0;
-        }
+        cancelClimbingWindup();
     }
 
     private function justReleasedRight():Void {
-        if (isClimbingWindup) {
-            isClimbingWindup = false;
-            windupTimer = 0;
-        }
+        cancelClimbingWindup();
     }
 
     private function justReleasedLeft():Void {
-        if (isClimbingWindup) {
-            isClimbingWindup = false;
-            windupTimer = 0;
-        }
+        cancelClimbingWindup();
     }
 
     private function justReleasedB():Void {}
@@ -601,6 +589,11 @@ class Player extends FlxSprite {
 
         stamina -= 5;
         isClimbingWinddown = true;
+    }
+
+    private function cancelClimbingWindup():Void {
+        isClimbingWindup = false;
+        windupTimer = 0;
     }
 
 }
