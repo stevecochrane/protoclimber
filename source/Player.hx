@@ -154,6 +154,7 @@ class Player extends FlxSprite {
         FlxG.watch.add(this, "isClimbingWinddown", "isClimbingWinddown");
         FlxG.watch.add(this, "windupTimer", "windupTimer");
         FlxG.watch.add(this, "winddownTimer", "winddownTimer");
+        FlxG.watch.add(this, "climbingDirection", "climbingDirection");
     }
 
     override public function destroy():Void {
@@ -555,12 +556,24 @@ class Player extends FlxSprite {
         switch(theDirection) {
             case Direction.UP:
                 y -= 16;
+            case Direction.UP_RIGHT:
+                x += 16;
+                y -= 16;
             case Direction.RIGHT:
                 x += 16;
+            case Direction.DOWN_RIGHT:
+                x += 16;
+                y += 16;
             case Direction.DOWN:
+                y += 16;
+            case Direction.DOWN_LEFT:
+                x -= 16;
                 y += 16;
             case Direction.LEFT:
                 x -= 16;
+            case Direction.UP_LEFT:
+                x -= 16;
+                y -= 16;
         }
 
         stamina -= 5;
