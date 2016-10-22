@@ -258,7 +258,7 @@ class Player extends FlxSprite {
                     currentAnimation = "windupUpLeft";
             }
 
-            if (windupTimer >= 0.2) {
+            if (windupTimer >= 1) {
                 isClimbingWindup = false;
                 windupTimer = 0;
                 moveInDirection(climbingDirection);
@@ -499,12 +499,35 @@ class Player extends FlxSprite {
         }
     }
 
-    private function justReleasedUp():Void {}
-    private function justReleasedDown():Void {}
-    private function justReleasedRight():Void {}
-    private function justReleasedLeft():Void {}
-    private function justReleasedB():Void {}
+    private function justReleasedUp():Void {
+        if (isClimbingWindup && climbingDirection == Direction.UP) {
+            isClimbingWindup = false;
+            windupTimer = 0;
+        }
+    }
 
+    private function justReleasedDown():Void {
+        if (isClimbingWindup && climbingDirection == Direction.DOWN) {
+            isClimbingWindup = false;
+            windupTimer = 0;
+        }
+    }
+
+    private function justReleasedRight():Void {
+        if (isClimbingWindup && climbingDirection == Direction.RIGHT) {
+            isClimbingWindup = false;
+            windupTimer = 0;
+        }
+    }
+
+    private function justReleasedLeft():Void {
+        if (isClimbingWindup && climbingDirection == Direction.LEFT) {
+            isClimbingWindup = false;
+            windupTimer = 0;
+        }
+    }
+
+    private function justReleasedB():Void {}
     private function justReleasedA():Void {
         FlxG.log.add("just released the A button");
         if (isOnWall) {
