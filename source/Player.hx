@@ -387,11 +387,6 @@ class Player extends FlxSprite {
 
     private function pressedUp():Void {
         if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x, y - 16 - 1, Groups.climbZones)) {
-            // For instant movement
-            // y -= 16;
-            // stamina -= 5;
-
-            // For timed movement
             isClimbingWindup = true;
             climbingDirection = Direction.UP;
         }
@@ -399,11 +394,6 @@ class Player extends FlxSprite {
 
     private function pressedUpRight():Void {
         if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x + 16 + 1, y - 16 - 1, Groups.climbZones)) {
-            // For instant movement
-            // y -= 16;
-            // stamina -= 5;
-
-            // For timed movement
             isClimbingWindup = true;
             climbingDirection = Direction.UP_RIGHT;
         }
@@ -416,11 +406,6 @@ class Player extends FlxSprite {
         }
 
         if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x + 16 + 1, y, Groups.climbZones)) {
-            // For instant movement
-            // x += 16;
-            // stamina -= 5;
-
-            // For timed movement
             isClimbingWindup = true;
             climbingDirection = Direction.RIGHT;
         }
@@ -428,11 +413,6 @@ class Player extends FlxSprite {
 
     private function pressedDownRight():Void {
         if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x + 16 + 1, y + 16 + 1, Groups.climbZones)) {
-            // For instant movement
-            // y -= 16;
-            // stamina -= 5;
-
-            // For timed movement
             isClimbingWindup = true;
             climbingDirection = Direction.DOWN_RIGHT;
         }
@@ -440,11 +420,6 @@ class Player extends FlxSprite {
 
     private function pressedDown():Void {
         if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x, y + 16 + 1, Groups.climbZones)) {
-            // For instant movement
-            // y += 16;
-            // stamina -= 5;
-
-            // For timed movement
             isClimbingWindup = true;
             climbingDirection = Direction.DOWN;
         }
@@ -452,11 +427,6 @@ class Player extends FlxSprite {
 
     private function pressedDownLeft():Void {
         if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x - 16 - 1, y + 16 + 1, Groups.climbZones)) {
-            // For instant movement
-            // y -= 16;
-            // stamina -= 5;
-
-            // For timed movement
             isClimbingWindup = true;
             climbingDirection = Direction.DOWN_LEFT;
         }
@@ -469,11 +439,6 @@ class Player extends FlxSprite {
         }
 
         if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x - 16 - 1, y, Groups.climbZones)) {
-            // For instant movement
-            // x -= 16;
-            // stamina -= 5;
-
-            // For timed movement
             isClimbingWindup = true;
             climbingDirection = Direction.LEFT;
         }
@@ -481,11 +446,6 @@ class Player extends FlxSprite {
 
     private function pressedUpLeft():Void {
         if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x - 16 - 1, y - 16 - 1, Groups.climbZones)) {
-            // For instant movement
-            // y -= 16;
-            // stamina -= 5;
-
-            // For timed movement
             isClimbingWindup = true;
             climbingDirection = Direction.UP_LEFT;
         }
