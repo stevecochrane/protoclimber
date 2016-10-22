@@ -577,7 +577,6 @@ class Player extends FlxSprite {
         }
 
         stamina -= 5;
-        currentAnimation = "winddownUp";
         isClimbingWinddown = true;
     }
 
