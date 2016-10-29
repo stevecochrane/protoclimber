@@ -288,9 +288,12 @@ class Player extends FlxSprite {
             }
 
             if (winddownTimer >= 0.2) {
+                currentAnimation = "idle";
+            }
+
+            if (winddownTimer >= 0.6) {
                 isClimbingWinddown = false;
                 winddownTimer = 0;
-                currentAnimation = "idle";
             }
         }
 
