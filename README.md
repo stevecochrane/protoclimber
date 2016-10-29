@@ -44,3 +44,7 @@
 - proto-13
   - The player now has air control, just like on the ground.
   - The air control implementation isn't sophisticated yet so it's overriding the charged jump's horizontal movement, so that will need refinement later.
+- proto-14
+  - The player now has to hold a direction to climb in that direction.
+  - The player now has a simple animation when climbing where they rock back and forth a bit.
+  - Climbing in eight directions is now supported.
