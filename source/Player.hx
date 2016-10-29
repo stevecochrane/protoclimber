@@ -307,12 +307,16 @@ class Player extends FlxSprite {
         if (gamepad.justPressed.B)           { justPressedB();      }
         if (gamepad.justPressed.A)           { justPressedA();      }
 
-        if (gamepad.pressed.DPAD_UP)         { pressedUp();         }
-        if (gamepad.pressed.DPAD_DOWN)       { pressedDown();       }
-        if (gamepad.pressed.DPAD_RIGHT)      { pressedRight();      }
-        if (gamepad.pressed.DPAD_LEFT)       { pressedLeft();       }
-        if (gamepad.pressed.B)               { pressedB();          }
-        if (gamepad.pressed.A)               { pressedA();          }
+        if (gamepad.pressed.DPAD_UP    && !gamepad.pressed.DPAD_LEFT && !gamepad.pressed.DPAD_RIGHT)         { pressedUp();        }
+        if (gamepad.pressed.DPAD_UP    &&  gamepad.pressed.DPAD_RIGHT)                                       { pressedUpRight();   }
+        if (gamepad.pressed.DPAD_RIGHT && !gamepad.pressed.DPAD_UP   && !gamepad.pressed.DPAD_DOWN)          { pressedRight();     }
+        if (gamepad.pressed.DPAD_DOWN  &&  gamepad.pressed.DPAD_RIGHT)                                       { pressedDownRight(); }
+        if (gamepad.pressed.DPAD_DOWN  && !gamepad.pressed.DPAD_LEFT && !gamepad.pressed.DPAD_RIGHT)         { pressedDown();      }
+        if (gamepad.pressed.DPAD_DOWN  &&  gamepad.pressed.DPAD_LEFT)                                        { pressedDownLeft();  }
+        if (gamepad.pressed.DPAD_LEFT  && !gamepad.pressed.DPAD_UP   && !gamepad.pressed.DPAD_DOWN)          { pressedLeft();      }
+        if (gamepad.pressed.DPAD_UP    &&  gamepad.pressed.DPAD_LEFT)                                        { pressedUpLeft();    }
+        if (gamepad.pressed.B)                                                                               { pressedB();         }
+        if (gamepad.pressed.A)                                                                               { pressedA();         }
 
         if (gamepad.justReleased.DPAD_UP)    { justReleasedUp();    }
         if (gamepad.justReleased.DPAD_DOWN)  { justReleasedDown();  }
