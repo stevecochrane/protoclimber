@@ -366,7 +366,7 @@ class Player extends FlxSprite {
             lockedVelocityX = velocity.x;
             isOnWall = false;
         } else {
-            if (overlaps(Groups.climbZones)) {
+            if (overlaps(Groups.climbZones) && stamina > 0) {
                 isOnWall = true;
                 /*isGrabbingTheWall = true;*/
                 isOnGround = false;
