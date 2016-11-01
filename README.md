@@ -48,3 +48,5 @@
   - The player now has to hold a direction to climb in that direction.
   - The player now has a simple animation when climbing where they rock back and forth a bit.
   - Climbing in eight directions is now supported.
+- proto-15
+  - Added a slight delay between movement steps that makes climbing feel a little more deliberate.
