@@ -508,7 +508,7 @@ class Player extends FlxSprite {
         FlxG.log.add("just released the A button");
         if (isOnWall) {
             isCharging = false;
-            if (stamina > 10) {
+            if (stamina > 3) {
                 if (FlxG.keys.anyPressed(KeyMappings.getDPadLeft())) {
                     velocity.x -= baseJumpVelocity + (charge * velocityFactor * 0.01);
                 } else if (FlxG.keys.anyPressed(KeyMappings.getDPadRight())) {
