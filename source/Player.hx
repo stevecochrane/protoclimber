@@ -34,6 +34,8 @@ class Player extends FlxSprite {
     private var lockedVelocityX:Float;
     private var staminaDrainTimer:Float;
     private var staminaRechargeTimer:Float;
+    private var staminaJumpCost:Float;
+    private var staminaStepCost:Float;
     private var velocityFactor:Float;
     private var windupTimer:Float;
     private var winddownTimer:Float;
@@ -73,6 +75,8 @@ class Player extends FlxSprite {
 
         staminaMax = 10;
         stamina = staminaMax;
+        staminaJumpCost = 3;
+        staminaStepCost = 1;
         staminaDrainTimer = 0;
         staminaRechargeTimer = 0;
 
@@ -188,15 +192,15 @@ class Player extends FlxSprite {
 
         // if (staminaRechargeTimer >= 0.25) {
         //     staminaRechargeTimer = 0;
-        //     if (isOnGround && stamina < 100) {
-        //         stamina += 10;
+        //     if (isOnGround && stamina < staminaMax) {
+        //         stamina += staminaStepCost;
         //     }
         // }
 
         // if (staminaDrainTimer >= 1) {
         //     staminaDrainTimer = 0;
         //     if (isOnWall && stamina > 0) {
-        //         stamina -= 1;
+        //         stamina -= staminaStepCost;
         //     }
         // }
 
@@ -508,7 +512,7 @@ class Player extends FlxSprite {
         FlxG.log.add("just released the A button");
         if (isOnWall) {
             isCharging = false;
-            if (stamina > 3) {
+            if (stamina > staminaJumpCost) {
                 if (FlxG.keys.anyPressed(KeyMappings.getDPadLeft())) {
                     velocity.x -= baseJumpVelocity + (charge * velocityFactor * 0.01);
                 } else if (FlxG.keys.anyPressed(KeyMappings.getDPadRight())) {
@@ -521,7 +525,7 @@ class Player extends FlxSprite {
                     velocity.y += baseJumpVelocity + (charge * velocityFactor * 0.01);
                 }
 
-                stamina -= 3;
+                stamina -= staminaJumpCost;
 
                 lockedVelocityX = velocity.x;
                 isOnWall = false;
@@ -575,7 +579,7 @@ class Player extends FlxSprite {
                 y -= 16;
         }
 
-        stamina -= 1;
+        stamina -= staminaStepCost;
         isClimbingWinddown = true;
     }
 
