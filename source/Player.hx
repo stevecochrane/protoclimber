@@ -181,21 +181,26 @@ class Player extends FlxSprite {
 
         super.update(elapsed);
 
-        staminaDrainTimer += elapsed;
-        staminaRechargeTimer += elapsed;
+        // staminaDrainTimer += elapsed;
+        // staminaRechargeTimer += elapsed;
 
-        if (staminaRechargeTimer >= 0.25) {
-            staminaRechargeTimer = 0;
-            if (isOnGround && stamina < 100) {
-                stamina += 10;
-            }
-        }
+        // if (staminaRechargeTimer >= 0.25) {
+        //     staminaRechargeTimer = 0;
+        //     if (isOnGround && stamina < 100) {
+        //         stamina += 10;
+        //     }
+        // }
 
-        if (staminaDrainTimer >= 1) {
-            staminaDrainTimer = 0;
-            if (isOnWall && stamina > 0) {
-                stamina -= 1;
-            }
+        // if (staminaDrainTimer >= 1) {
+        //     staminaDrainTimer = 0;
+        //     if (isOnWall && stamina > 0) {
+        //         stamina -= 1;
+        //     }
+        // }
+
+        // Temporary, instant stamina recharge when on ground
+        if (isOnGround) {
+            stamina = 100;
         }
 
         if (isCharging) {
