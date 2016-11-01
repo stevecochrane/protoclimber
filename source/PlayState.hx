@@ -23,8 +23,8 @@ class PlayState extends FlxState {
         FlxG.camera.follow(player);
         FlxG.camera.pixelPerfectRender = true;
 
-        staminaBar = new FlxBar(8, FlxG.height - 16, FlxBarFillDirection.LEFT_TO_RIGHT, 80, 8, player, "stamina", 0, player.staminaMax);
-        staminaBar.createFilledBar(0xff000000, 0xffffffff, true, 0xffffffff);
+        staminaBar = new FlxBar(8, FlxG.height - 16, FlxBarFillDirection.LEFT_TO_RIGHT, 100, 8, player, "stamina", 0, player.staminaMax);
+        staminaBar.createImageBar(Assets.IMG_STAMINA_BAR_EMPTY, Assets.IMG_STAMINA_BAR_FULL);
         staminaBar.scrollFactor.set(0, 0);
 
         chargeBar = new FlxBar(8, FlxG.height - 32, FlxBarFillDirection.LEFT_TO_RIGHT, 80, 8, player, "charge", 0, 100);

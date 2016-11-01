@@ -7,5 +7,7 @@ class Assets {
 
     //  Images
     public static inline var IMG_PLAYER:String = "images/player.png";
+    public static inline var IMG_STAMINA_BAR_EMPTY:String = "images/stamina-bar-empty.png";
+    public static inline var IMG_STAMINA_BAR_FULL:String = "images/stamina-bar-full.png";
 
 }
