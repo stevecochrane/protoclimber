@@ -521,7 +521,7 @@ class Player extends FlxSprite {
                     velocity.y += baseJumpVelocity + (charge * velocityFactor * 0.01);
                 }
 
-                stamina -= 20;
+                stamina -= 3;
 
                 lockedVelocityX = velocity.x;
                 isOnWall = false;
@@ -575,7 +575,7 @@ class Player extends FlxSprite {
                 y -= 16;
         }
 
-        stamina -= 5;
+        stamina -= 1;
         isClimbingWinddown = true;
     }
 
