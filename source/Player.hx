@@ -73,7 +73,7 @@ class Player extends FlxSprite {
         offset.x = 16;
         offset.y = 24;
 
-        staminaMax = 20;
+        staminaMax = 18;
         stamina = staminaMax;
         staminaJumpCost = 3;
         staminaStepCost = 1;
