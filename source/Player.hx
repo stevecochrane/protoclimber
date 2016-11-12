@@ -393,7 +393,7 @@ class Player extends FlxSprite {
                 climbingDirection = Direction.UP;
             }
         } else {
-            if (overlaps(Groups.climbZones) && stamina > 0) {
+            if (overlaps(Groups.climbZones) && stamina > 0 && velocity.y >= 0) {
                 isOnWall = true;
                 /*isGrabbingTheWall = true;*/
                 isOnGround = false;
@@ -410,7 +410,7 @@ class Player extends FlxSprite {
         if (!isOnWall) {
             velocity.x = baseRunVelocity;
 
-            if (overlaps(Groups.climbZones) && stamina > 0) {
+            if (overlaps(Groups.climbZones) && stamina > 0 && velocity.y >= 0) {
                 isOnWall = true;
                 /*isGrabbingTheWall = true;*/
                 isOnGround = false;
@@ -483,7 +483,7 @@ class Player extends FlxSprite {
         if (!isOnWall) {
             velocity.x = -baseRunVelocity;
 
-            if (overlaps(Groups.climbZones) && stamina > 0) {
+            if (overlaps(Groups.climbZones) && stamina > 0 && velocity.y >= 0) {
                 isOnWall = true;
                 /*isGrabbingTheWall = true;*/
                 isOnGround = false;
