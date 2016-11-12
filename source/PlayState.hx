@@ -27,23 +27,23 @@ class PlayState extends FlxState {
         staminaBar.createImageBar(Assets.IMG_STAMINA_BAR_EMPTY, Assets.IMG_STAMINA_BAR_FULL);
         staminaBar.scrollFactor.set(0, 0);
 
-        chargeBar = new FlxBar(8, FlxG.height - 32, FlxBarFillDirection.LEFT_TO_RIGHT, 80, 8, player, "charge", 0, 100);
-        chargeBar.createFilledBar(0xff000000, 0xffffffff, true, 0xffffffff);
-        chargeBar.scrollFactor.set(0, 0);
+        // chargeBar = new FlxBar(8, FlxG.height - 32, FlxBarFillDirection.LEFT_TO_RIGHT, 80, 8, player, "charge", 0, 100);
+        // chargeBar.createFilledBar(0xff000000, 0xffffffff, true, 0xffffffff);
+        // chargeBar.scrollFactor.set(0, 0);
 
         add(level.backgroundTiles);
         add(Groups.climbZones);
         add(player); //  Player needs to be below pickaxes or weird unexplained things will happen
         add(level.foregroundTiles);
         add(staminaBar);
-        add(chargeBar);
+        // add(chargeBar);
 
     }
 
     override public function destroy():Void {
         super.destroy();
 
-        chargeBar = FlxDestroyUtil.destroy(chargeBar);
+        // chargeBar = FlxDestroyUtil.destroy(chargeBar);
         player = FlxDestroyUtil.destroy(player);
         staminaBar = FlxDestroyUtil.destroy(staminaBar);
     }
