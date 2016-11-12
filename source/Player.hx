@@ -375,10 +375,23 @@ class Player extends FlxSprite {
     private function justPressedRight():Void {}
     private function justPressedLeft():Void {}
 
-    private function justPressedB():Void {
+    private function justPressedB():Void {}
+    private function justPressedA():Void {
         if (isOnWall) {
-            lockedVelocityX = velocity.x;
-            isOnWall = false;
+            FlxG.log.add("just pressed the A button");
+            isCharging = true;
+        } else if (isOnGround && isTouching(FlxObject.FLOOR)) {
+            FlxG.log.add("Jump!");
+            velocity.y = baseGroundJumpVelocity;
+        }
+    }
+
+    private function pressedUp():Void {
+        if (isOnWall) {
+            if (!isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x, y - 16 - 1, Groups.climbZones)) {
+                isClimbingWindup = true;
+                climbingDirection = Direction.UP;
+            }
         } else {
             if (overlaps(Groups.climbZones) && stamina > 0) {
                 isOnWall = true;
@@ -393,26 +406,20 @@ class Player extends FlxSprite {
         }
     }
 
-    private function justPressedA():Void {
-        if (isOnWall) {
-            FlxG.log.add("just pressed the A button");
-            isCharging = true;
-        } else if (isOnGround && isTouching(FlxObject.FLOOR)) {
-            FlxG.log.add("Jump!");
-            velocity.y = baseGroundJumpVelocity;
-        }
-    }
-
-    private function pressedUp():Void {
-        if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x, y - 16 - 1, Groups.climbZones)) {
-            isClimbingWindup = true;
-            climbingDirection = Direction.UP;
-        }
-    }
-
     private function pressedUpRight():Void {
         if (!isOnWall) {
             velocity.x = baseRunVelocity;
+
+            if (overlaps(Groups.climbZones) && stamina > 0) {
+                isOnWall = true;
+                /*isGrabbingTheWall = true;*/
+                isOnGround = false;
+
+                acceleration.y = 0;
+                velocity.y = 0;
+
+                snapToGrid();
+            }
         }
 
         if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x + 16 + 1, y - 16 - 1, Groups.climbZones)) {
@@ -475,6 +482,17 @@ class Player extends FlxSprite {
     private function pressedUpLeft():Void {
         if (!isOnWall) {
             velocity.x = -baseRunVelocity;
+
+            if (overlaps(Groups.climbZones) && stamina > 0) {
+                isOnWall = true;
+                /*isGrabbingTheWall = true;*/
+                isOnGround = false;
+
+                acceleration.y = 0;
+                velocity.y = 0;
+
+                snapToGrid();
+            }
         }
 
         if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x - 16 - 1, y - 16 - 1, Groups.climbZones)) {
