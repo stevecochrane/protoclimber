@@ -377,12 +377,22 @@ class Player extends FlxSprite {
 
     private function justPressedB():Void {}
     private function justPressedA():Void {
-        if (isOnWall) {
-            FlxG.log.add("just pressed the A button");
-            isCharging = true;
-        } else if (isOnGround && isTouching(FlxObject.FLOOR)) {
+        // if (isOnWall) {
+        //     FlxG.log.add("just pressed the A button");
+        //     isCharging = true;
+        // } else if (isOnGround && isTouching(FlxObject.FLOOR)) {
+        //     FlxG.log.add("Jump!");
+        //     velocity.y = baseGroundJumpVelocity;
+        // }
+
+        if (isOnWall || isOnGround && isTouching(FlxObject.FLOOR)) {
             FlxG.log.add("Jump!");
             velocity.y = baseGroundJumpVelocity;
+
+            if (isOnWall) {
+                stamina -= staminaJumpCost;
+                isOnWall = false;
+            }
         }
     }
 
@@ -503,10 +513,10 @@ class Player extends FlxSprite {
 
     private function pressedB():Void {}
     private function pressedA():Void {
-        if (isOnWall) {
-            velocity.x = 0;
-            velocity.y = 0;
-        }
+        // if (isOnWall) {
+        //     velocity.x = 0;
+        //     velocity.y = 0;
+        // }
     }
 
     private function justReleasedUp():Void {
@@ -527,29 +537,29 @@ class Player extends FlxSprite {
 
     private function justReleasedB():Void {}
     private function justReleasedA():Void {
-        FlxG.log.add("just released the A button");
-        if (isOnWall) {
-            isCharging = false;
-            if (stamina > staminaJumpCost) {
-                if (FlxG.keys.anyPressed(KeyMappings.getDPadLeft())) {
-                    velocity.x -= baseJumpVelocity + (charge * velocityFactor * 0.01);
-                } else if (FlxG.keys.anyPressed(KeyMappings.getDPadRight())) {
-                    velocity.x += baseJumpVelocity + (charge * velocityFactor * 0.01);
-                }
-
-                if (FlxG.keys.anyPressed(KeyMappings.getDPadUp())) {
-                    velocity.y -= baseJumpVelocity + (charge * velocityFactor * 0.01);
-                } else if (FlxG.keys.anyPressed(KeyMappings.getDPadDown())) {
-                    velocity.y += baseJumpVelocity + (charge * velocityFactor * 0.01);
-                }
-
-                stamina -= staminaJumpCost;
-
-                lockedVelocityX = velocity.x;
-                isOnWall = false;
-            }
-            charge = 0;
-        }
+        // FlxG.log.add("just released the A button");
+        // if (isOnWall) {
+        //     isCharging = false;
+        //     if (stamina > staminaJumpCost) {
+        //         if (FlxG.keys.anyPressed(KeyMappings.getDPadLeft())) {
+        //             velocity.x -= baseJumpVelocity + (charge * velocityFactor * 0.01);
+        //         } else if (FlxG.keys.anyPressed(KeyMappings.getDPadRight())) {
+        //             velocity.x += baseJumpVelocity + (charge * velocityFactor * 0.01);
+        //         }
+        //
+        //         if (FlxG.keys.anyPressed(KeyMappings.getDPadUp())) {
+        //             velocity.y -= baseJumpVelocity + (charge * velocityFactor * 0.01);
+        //         } else if (FlxG.keys.anyPressed(KeyMappings.getDPadDown())) {
+        //             velocity.y += baseJumpVelocity + (charge * velocityFactor * 0.01);
+        //         }
+        //
+        //         stamina -= staminaJumpCost;
+        //
+        //         lockedVelocityX = velocity.x;
+        //         isOnWall = false;
+        //     }
+        //     charge = 0;
+        // }
     }
 
     private function snapToGrid():Void {
