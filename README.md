@@ -53,3 +53,5 @@
 - proto-16
   - Replaced the stamina bar, which used to be a range of 0 to 100 values, to a segmented bar with 0 to 18 values. This is hopefully easier to parse.
   - For now, stamina is back to an instant recharge when you touch the ground, with no drain while on the wall, but that might be restored later.
+- proto-17
+  - The B button now does nothing, and you can instead hold Up to grab on to the wall. More conventional this way.
