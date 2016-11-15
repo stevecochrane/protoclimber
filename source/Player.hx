@@ -26,6 +26,7 @@ class Player extends FlxSprite {
     private var isClimbingWindup:Bool;
     private var isClimbingWinddown:Bool;
     private var isCharging:Bool;
+    private var isDuckingForAJump:Bool;
     private var isGrabbingTheWall:Bool;
     private var isGrabbingTheWallDelayActive:Bool;
     private var isGrabbingTheWallDelayTimer:Float;
@@ -97,6 +98,8 @@ class Player extends FlxSprite {
         windupTimer = 0;
         winddownTimer = 0;
 
+        isDuckingForAJump = false;
+
         currentAnimation = "idle";
 
         pixelPerfectPosition = true;
@@ -139,6 +142,8 @@ class Player extends FlxSprite {
         animation.add("winddownLeft",      [15]);
         animation.add("windupUpLeft",      [12]);
         animation.add("winddownUpLeft",    [16]);
+
+        animation.add("ducking",           [17]);
 
         // FlxG.watch.add(this, "x", "x");
         // FlxG.watch.add(this, "y", "y");
@@ -308,6 +313,10 @@ class Player extends FlxSprite {
             }
         }
 
+        if (isDuckingForAJump) {
+            currentAnimation = "ducking";
+        }
+
         animation.play(currentAnimation);
         currentAnimation = "idle";
     }
@@ -394,6 +403,10 @@ class Player extends FlxSprite {
         //         isOnWall = false;
         //     }
         // }
+
+        if (!isOnWall) {
+            isDuckingForAJump = true;
+        }
     }
 
     private function pressedUp():Void {
@@ -570,6 +583,8 @@ class Player extends FlxSprite {
                 isOnWall = false;
             }
         }
+
+        isDuckingForAJump = false;
     }
 
     private function snapToGrid():Void {
