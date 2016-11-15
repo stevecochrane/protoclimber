@@ -385,15 +385,15 @@ class Player extends FlxSprite {
         //     velocity.y = baseGroundJumpVelocity;
         // }
 
-        if (isOnWall || isOnGround && isTouching(FlxObject.FLOOR)) {
-            FlxG.log.add("Jump!");
-            velocity.y = baseGroundJumpVelocity;
-
-            if (isOnWall) {
-                stamina -= staminaJumpCost;
-                isOnWall = false;
-            }
-        }
+        // if (isOnWall || isOnGround && isTouching(FlxObject.FLOOR)) {
+        //     FlxG.log.add("Jump!");
+        //     velocity.y = baseGroundJumpVelocity;
+        //
+        //     if (isOnWall) {
+        //         stamina -= staminaJumpCost;
+        //         isOnWall = false;
+        //     }
+        // }
     }
 
     private function pressedUp():Void {
@@ -560,6 +560,16 @@ class Player extends FlxSprite {
         //     }
         //     charge = 0;
         // }
+
+        if (isOnWall || isOnGround && isTouching(FlxObject.FLOOR)) {
+            FlxG.log.add("Jump!");
+            velocity.y = baseGroundJumpVelocity;
+
+            if (isOnWall) {
+                stamina -= staminaJumpCost;
+                isOnWall = false;
+            }
+        }
     }
 
     private function snapToGrid():Void {
