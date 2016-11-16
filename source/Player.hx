@@ -16,6 +16,7 @@ class Player extends FlxSprite {
 
     private var accelerationGravity:Float;
     private var baseGroundJumpVelocity:Float;
+    private var baseGroundChargedJumpVelocity:Float;
     private var baseMoveVelocity:Float;
     private var baseJumpVelocity:Float;
     private var baseRunVelocity:Float;
@@ -55,7 +56,8 @@ class Player extends FlxSprite {
         lockedVelocityX = 0;
 
         baseRunVelocity = 100;
-        baseGroundJumpVelocity = -accelerationGravity * 0.4;
+        baseGroundJumpVelocity = -accelerationGravity * 0.45;
+        baseGroundChargedJumpVelocity = -accelerationGravity * 0.6;
 
         acceleration.x = 0;
         acceleration.y = 0;
@@ -216,12 +218,6 @@ class Player extends FlxSprite {
 
         if (isCharging) {
             chargeTimer += elapsed;
-            if (chargeTimer >= 0.05) {
-                chargeTimer = 0;
-                if (charge < 100) {
-                    charge += 5;
-                }
-            }
         }
 
         if (!isOnWall) {
@@ -406,6 +402,7 @@ class Player extends FlxSprite {
 
         if (!isOnWall) {
             isDuckingForAJump = true;
+            isCharging = true;
         }
     }
 
@@ -576,12 +573,20 @@ class Player extends FlxSprite {
 
         if (isOnWall || isOnGround && isTouching(FlxObject.FLOOR)) {
             FlxG.log.add("Jump!");
-            velocity.y = baseGroundJumpVelocity;
+
+            if (isCharging && chargeTimer > 0.5) {
+                velocity.y = baseGroundChargedJumpVelocity;
+            } else {
+                velocity.y = baseGroundJumpVelocity;
+            }
 
             if (isOnWall) {
                 stamina -= staminaJumpCost;
                 isOnWall = false;
             }
+
+            isCharging = false;
+            chargeTimer = 0;
         }
 
         isDuckingForAJump = false;
