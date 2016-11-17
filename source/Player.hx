@@ -4,6 +4,7 @@ import flixel.FlxCamera;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
+import flixel.effects.FlxFlicker;
 import flixel.input.gamepad.FlxGamepad;
 import flixel.util.FlxColor;
 import flixel.util.FlxDestroyUtil;
@@ -26,6 +27,7 @@ class Player extends FlxSprite {
     private var gamepad:FlxGamepad;
     private var isClimbingWindup:Bool;
     private var isClimbingWinddown:Bool;
+    private var isCharged:Bool;
     private var isCharging:Bool;
     private var isDuckingForAJump:Bool;
     private var isGrabbingTheWall:Bool;
@@ -85,6 +87,7 @@ class Player extends FlxSprite {
 
         charge = 0;
         chargeTimer = 0;
+        isCharged = false;
         isCharging = false;
 
         isOnWall = true;
@@ -218,6 +221,11 @@ class Player extends FlxSprite {
 
         if (isCharging) {
             chargeTimer += elapsed;
+
+            if (chargeTimer >= 0.5) {
+                isCharged = true;
+                FlxFlicker.flicker(this, 0, 0.04, true, false);
+            }
         }
 
         if (!isOnWall) {
@@ -574,7 +582,7 @@ class Player extends FlxSprite {
         if (isOnWall || isOnGround && isTouching(FlxObject.FLOOR)) {
             FlxG.log.add("Jump!");
 
-            if (isCharging && chargeTimer > 0.5) {
+            if (isCharged) {
                 velocity.y = baseGroundChargedJumpVelocity;
             } else {
                 velocity.y = baseGroundJumpVelocity;
@@ -585,6 +593,8 @@ class Player extends FlxSprite {
                 isOnWall = false;
             }
 
+            isCharged = false;
+            FlxFlicker.stopFlickering(this);
             isCharging = false;
             chargeTimer = 0;
         }
