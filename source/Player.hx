@@ -16,6 +16,7 @@ class Player extends FlxSprite {
     public var staminaMax:Float;
 
     private var accelerationGravity:Float;
+    private var baseDragX:Float;
     private var baseGroundJumpVelocity:Float;
     private var baseGroundChargedJumpVelocity:Float;
     private var baseMoveVelocity:Float;
@@ -24,6 +25,7 @@ class Player extends FlxSprite {
     private var chargeTimer:Float;
     private var climbingDirection:Int;
     private var currentAnimation:String;
+    private var chargingDragX:Float;
     private var gamepad:FlxGamepad;
     private var isClimbingWindup:Bool;
     private var isClimbingWinddown:Bool;
@@ -64,7 +66,9 @@ class Player extends FlxSprite {
         acceleration.x = 0;
         acceleration.y = 0;
 
-        drag.x = 800;
+        baseDragX = 800;
+        chargingDragX = 200;
+        drag.x = baseDragX;
         drag.y = 800;
 
         loadGraphic(Assets.IMG_PLAYER, true, 48, 72);
@@ -411,6 +415,7 @@ class Player extends FlxSprite {
         if (!isOnWall) {
             isDuckingForAJump = true;
             isCharging = true;
+            drag.x = chargingDragX;
         }
     }
 
@@ -435,7 +440,7 @@ class Player extends FlxSprite {
     }
 
     private function pressedUpRight():Void {
-        if (!isOnWall) {
+        if (!isOnWall && !isCharging) {
             velocity.x = baseRunVelocity;
 
             if (overlaps(Groups.climbZones) && stamina > 0 && velocity.y >= 0) {
@@ -457,7 +462,7 @@ class Player extends FlxSprite {
     }
 
     private function pressedRight():Void {
-        if (!isOnWall) {
+        if (!isOnWall && !isCharging) {
             velocity.x = baseRunVelocity;
         }
 
@@ -468,7 +473,7 @@ class Player extends FlxSprite {
     }
 
     private function pressedDownRight():Void {
-        if (!isOnWall) {
+        if (!isOnWall && !isCharging) {
             velocity.x = baseRunVelocity;
         }
 
@@ -486,7 +491,7 @@ class Player extends FlxSprite {
     }
 
     private function pressedDownLeft():Void {
-        if (!isOnWall) {
+        if (!isOnWall && !isCharging) {
             velocity.x = -baseRunVelocity;
         }
 
@@ -497,7 +502,7 @@ class Player extends FlxSprite {
     }
 
     private function pressedLeft():Void {
-        if (!isOnWall) {
+        if (!isOnWall && !isCharging) {
             velocity.x = -baseRunVelocity;
         }
 
@@ -508,7 +513,7 @@ class Player extends FlxSprite {
     }
 
     private function pressedUpLeft():Void {
-        if (!isOnWall) {
+        if (!isOnWall && !isCharging) {
             velocity.x = -baseRunVelocity;
 
             if (overlaps(Groups.climbZones) && stamina > 0 && velocity.y >= 0) {
@@ -597,6 +602,7 @@ class Player extends FlxSprite {
             FlxFlicker.stopFlickering(this);
             isCharging = false;
             chargeTimer = 0;
+            drag.x = baseDragX;
         }
 
         isDuckingForAJump = false;
