@@ -597,14 +597,13 @@ class Player extends FlxSprite {
                 stamina -= staminaJumpCost;
                 isOnWall = false;
             }
-
-            isCharged = false;
-            FlxFlicker.stopFlickering(this);
-            isCharging = false;
-            chargeTimer = 0;
-            drag.x = baseDragX;
         }
 
+        isCharged = false;
+        FlxFlicker.stopFlickering(this);
+        isCharging = false;
+        chargeTimer = 0;
+        drag.x = baseDragX;
         isDuckingForAJump = false;
     }
 
