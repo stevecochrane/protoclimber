@@ -1,14 +1,10 @@
 package;
 
 import flixel.FlxSprite;
-import flixel.math.FlxPoint;
 import flixel.util.FlxDestroyUtil;
 
 class AvalancheGenerator extends FlxSprite {
 
-    private static var fallingIceGroup:FlxTypedGroup<AvalancheFallingIce> = new FlxTypedGroup<AvalancheFallingIce>();
-
-    private var midpoint:FlxPoint;
     private var phase:Float = 0;
     private var timer:Float = 0;
 
@@ -30,8 +26,6 @@ class AvalancheGenerator extends FlxSprite {
 
     override public function destroy():Void {
         super.destroy();
-        fallingIceGroup = FlxDestroyUtil.destroy(fallingIceGroup);
-        midpoint = FlxDestroyUtil.destroy(midpoint);
     }
 
     override public function update(elapsed:Float):Void {
@@ -44,10 +38,8 @@ class AvalancheGenerator extends FlxSprite {
     }
 
     private function dropIceIfInRange():Void {
-        //  Check if this is within the current camera bounds. If so, drop some ice, if not, don't.
         if (isOnScreen()) {
-            getMidpoint(midpoint);
-            fallingIceGroup.recycle(AvalancheFallingIce).init(midpoint);
+            Groups.avalancheFallingIce.recycle(AvalancheFallingIce).init(x + (width / 2), y + (height / 2));
         }
     }
 }

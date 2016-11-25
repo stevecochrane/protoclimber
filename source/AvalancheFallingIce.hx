@@ -26,8 +26,8 @@ class AvalancheFallingIce extends FlxSprite {
         super.destroy();
     }
 
-    public function init(location:FlxPoint):Void {
-        super.reset(location.x - (width / 2), location.y - (height / 2));
+    public function init(xPos:Float, yPos:Float):Void {
+        super.reset(xPos, yPos);
         hasFallenFromTop = false;
     }
 
