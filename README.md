@@ -58,3 +58,6 @@
 - proto-18
   - Holding the A button now charges a jump. If fully charged (0.5 seconds) the player jumps 1.5x the normal jump height.
   - To allow for this, jumping now happens on the release of the jump button rather than the initial press.
+- proto-19
+  - The player can no longer start charging a jump while in midair.
+  - If the A button is held down when in midair, a charged jump starts as soon as the player hits the ground.
