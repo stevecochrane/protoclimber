@@ -55,3 +55,6 @@
   - For now, stamina is back to an instant recharge when you touch the ground, with no drain while on the wall, but that might be restored later.
 - proto-17
   - The B button now does nothing, and you can instead hold Up to grab on to the wall. More conventional this way.
+- proto-18
+  - Holding the A button now charges a jump. If fully charged (0.5 seconds) the player jumps 1.5x the normal jump height.
+  - To allow for this, jumping now happens on the release of the jump button rather than the initial press.
