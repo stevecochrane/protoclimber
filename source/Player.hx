@@ -411,11 +411,6 @@ class Player extends FlxSprite {
         //         isOnWall = false;
         //     }
         // }
-
-        cancelClimbingWindup();
-        isCharging = true;
-        drag.x = chargingDragX;
-        isDuckingForAJump = true;
     }
 
     private function pressedUp():Void {
@@ -553,6 +548,12 @@ class Player extends FlxSprite {
         //     velocity.x = 0;
         //     velocity.y = 0;
         // }
+        if (!isCharging && velocity.y == 0) {
+            cancelClimbingWindup();
+            isCharging = true;
+            drag.x = chargingDragX;
+            isDuckingForAJump = true;
+        }
     }
 
     private function justReleasedUp():Void {
