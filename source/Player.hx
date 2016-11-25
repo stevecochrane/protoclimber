@@ -412,6 +412,7 @@ class Player extends FlxSprite {
         //     }
         // }
 
+        cancelClimbingWindup();
         isCharging = true;
         drag.x = chargingDragX;
         isDuckingForAJump = true;
