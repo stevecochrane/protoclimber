@@ -418,84 +418,96 @@ class Player extends FlxSprite {
     }
 
     private function pressedUp():Void {
-        if (isOnWall) {
-            if (!isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x, y - 16 - 1, Groups.climbZones)) {
-                isClimbingWindup = true;
-                climbingDirection = Direction.UP;
-            }
-        } else {
-            if (overlaps(Groups.climbZones) && stamina > 0 && velocity.y >= 0) {
-                isOnWall = true;
-                /*isGrabbingTheWall = true;*/
-                isOnGround = false;
+        if (!isCharging) {
+            if (isOnWall) {
+                if (!isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x, y - 16 - 1, Groups.climbZones)) {
+                    isClimbingWindup = true;
+                    climbingDirection = Direction.UP;
+                }
+            } else {
+                if (overlaps(Groups.climbZones) && stamina > 0 && velocity.y >= 0) {
+                    isOnWall = true;
+                    /*isGrabbingTheWall = true;*/
+                    isOnGround = false;
 
-                acceleration.y = 0;
-                velocity.y = 0;
+                    acceleration.y = 0;
+                    velocity.y = 0;
 
-                snapToGrid();
+                    snapToGrid();
+                }
             }
         }
     }
 
     private function pressedUpRight():Void {
-        if (!isOnWall && !isCharging) {
-            velocity.x = baseRunVelocity;
+        if (!isCharging) {
+            if (!isOnWall) {
+                velocity.x = baseRunVelocity;
 
-            if (overlaps(Groups.climbZones) && stamina > 0 && velocity.y >= 0) {
-                isOnWall = true;
-                /*isGrabbingTheWall = true;*/
-                isOnGround = false;
+                if (overlaps(Groups.climbZones) && stamina > 0 && velocity.y >= 0) {
+                    isOnWall = true;
+                    /*isGrabbingTheWall = true;*/
+                    isOnGround = false;
 
-                acceleration.y = 0;
-                velocity.y = 0;
+                    acceleration.y = 0;
+                    velocity.y = 0;
 
-                snapToGrid();
+                    snapToGrid();
+                }
             }
-        }
 
-        if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x + 16 + 1, y - 16 - 1, Groups.climbZones)) {
-            isClimbingWindup = true;
-            climbingDirection = Direction.UP_RIGHT;
+            if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x + 16 + 1, y - 16 - 1, Groups.climbZones)) {
+                isClimbingWindup = true;
+                climbingDirection = Direction.UP_RIGHT;
+            }
         }
     }
 
     private function pressedRight():Void {
-        if (!isOnWall && !isCharging) {
-            velocity.x = baseRunVelocity;
-        }
+        if (!isCharging) {
+            if (!isOnWall) {
+                velocity.x = baseRunVelocity;
+            }
 
-        if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x + 16 + 1, y, Groups.climbZones)) {
-            isClimbingWindup = true;
-            climbingDirection = Direction.RIGHT;
+            if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x + 16 + 1, y, Groups.climbZones)) {
+                isClimbingWindup = true;
+                climbingDirection = Direction.RIGHT;
+            }
         }
     }
 
     private function pressedDownRight():Void {
-        if (!isOnWall && !isCharging) {
-            velocity.x = baseRunVelocity;
-        }
+        if (!isCharging) {
+            if (!isOnWall) {
+                velocity.x = baseRunVelocity;
+            }
 
-        if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x + 16 + 1, y + 16 + 1, Groups.climbZones)) {
-            isClimbingWindup = true;
-            climbingDirection = Direction.DOWN_RIGHT;
+            if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x + 16 + 1, y + 16 + 1, Groups.climbZones)) {
+                isClimbingWindup = true;
+                climbingDirection = Direction.DOWN_RIGHT;
+            }
         }
     }
 
     private function pressedDown():Void {
-        if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x, y + 16 + 1, Groups.climbZones)) {
-            isClimbingWindup = true;
-            climbingDirection = Direction.DOWN;
+        if (!isCharging) {
+            if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x, y + 16 + 1, Groups.climbZones)) {
+                isClimbingWindup = true;
+                climbingDirection = Direction.DOWN;
+            }
         }
     }
 
     private function pressedDownLeft():Void {
-        if (!isOnWall && !isCharging) {
-            velocity.x = -baseRunVelocity;
-        }
+        if (!isCharging) {
+            if (!isOnWall) {
+                velocity.x = -baseRunVelocity;
+            }
 
-        if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x - 16 - 1, y + 16 + 1, Groups.climbZones)) {
-            isClimbingWindup = true;
-            climbingDirection = Direction.DOWN_LEFT;
+            if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x - 16 - 1, y + 16 + 1, Groups.climbZones)) {
+                isClimbingWindup = true;
+                climbingDirection = Direction.DOWN_LEFT;
+            }
         }
     }
 
@@ -511,24 +523,26 @@ class Player extends FlxSprite {
     }
 
     private function pressedUpLeft():Void {
-        if (!isOnWall && !isCharging) {
-            velocity.x = -baseRunVelocity;
+        if (!isCharging) {
+            if (!isOnWall) {
+                velocity.x = -baseRunVelocity;
 
-            if (overlaps(Groups.climbZones) && stamina > 0 && velocity.y >= 0) {
-                isOnWall = true;
-                /*isGrabbingTheWall = true;*/
-                isOnGround = false;
+                if (overlaps(Groups.climbZones) && stamina > 0 && velocity.y >= 0) {
+                    isOnWall = true;
+                    /*isGrabbingTheWall = true;*/
+                    isOnGround = false;
 
-                acceleration.y = 0;
-                velocity.y = 0;
+                    acceleration.y = 0;
+                    velocity.y = 0;
 
-                snapToGrid();
+                    snapToGrid();
+                }
             }
-        }
 
-        if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x - 16 - 1, y - 16 - 1, Groups.climbZones)) {
-            isClimbingWindup = true;
-            climbingDirection = Direction.UP_LEFT;
+            if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x - 16 - 1, y - 16 - 1, Groups.climbZones)) {
+                isClimbingWindup = true;
+                climbingDirection = Direction.UP_LEFT;
+            }
         }
     }
 
