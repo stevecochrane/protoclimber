@@ -150,6 +150,10 @@ class TiledLevel extends TiledMap {
 
         switch (obj.type.toLowerCase()) {
 
+            case "avalanche_generator":
+                var avalancheGenerator:AvalancheGenerator = new AvalancheGenerator(x, y, obj.width, obj.height, Std.parseFloat(obj.properties.get("phase")));
+                Groups.avalancheGenerators.add(avalancheGenerator);
+
             case "climb_zone":
                 var climbZone:FlxSprite = new FlxSprite(x, y);
                 climbZone.width = obj.width;
