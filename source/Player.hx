@@ -412,11 +412,9 @@ class Player extends FlxSprite {
         //     }
         // }
 
-        if (!isOnWall) {
-            isDuckingForAJump = true;
-            isCharging = true;
-            drag.x = chargingDragX;
-        }
+        isCharging = true;
+        drag.x = chargingDragX;
+        isDuckingForAJump = true;
     }
 
     private function pressedUp():Void {
