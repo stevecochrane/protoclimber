@@ -33,8 +33,10 @@ class PlayState extends FlxState {
 
         add(level.backgroundTiles);
         add(Groups.climbZones);
-        add(player); //  Player needs to be below pickaxes or weird unexplained things will happen
+        add(Groups.avalancheGenerators);
+        add(player);
         add(level.foregroundTiles);
+        add(Groups.avalancheFallingIce);
         add(staminaBar);
         // add(chargeBar);
 
