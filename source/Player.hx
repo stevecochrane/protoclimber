@@ -11,9 +11,11 @@ import flixel.util.FlxDestroyUtil;
 
 class Player extends FlxSprite {
 
+    public static var player:Player;
+    public static var staminaMax:Float = 18;
+
     public var charge:Float;
     public var stamina:Float;
-    public var staminaMax:Float;
 
     private var accelerationGravity:Float;
     private var baseDragX:Float;
@@ -82,7 +84,6 @@ class Player extends FlxSprite {
         offset.x = 16;
         offset.y = 24;
 
-        staminaMax = 18;
         stamina = staminaMax;
         staminaJumpCost = 3;
         staminaStepCost = 1;

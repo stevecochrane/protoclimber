@@ -9,7 +9,6 @@ class PlayState extends FlxState {
 
     private var chargeBar:FlxBar;
     private var level:TiledLevel;
-    private var player:Player;
     private var staminaBar:FlxBar;
 
     override public function create():Void {
@@ -18,12 +17,10 @@ class PlayState extends FlxState {
 
         level = TiledLevel.loadLevel(1, this);
 
-        player = new Player(32, 608);
-
-        FlxG.camera.follow(player);
+        FlxG.camera.follow(Player.player);
         FlxG.camera.pixelPerfectRender = true;
 
-        staminaBar = new FlxBar(8, FlxG.height - 16, FlxBarFillDirection.LEFT_TO_RIGHT, 96, 8, player, "stamina", 0, player.staminaMax);
+        staminaBar = new FlxBar(8, FlxG.height - 16, FlxBarFillDirection.LEFT_TO_RIGHT, 96, 8, Player.player, "stamina", 0, Player.staminaMax);
         staminaBar.createImageBar(Assets.IMG_STAMINA_BAR_EMPTY, Assets.IMG_STAMINA_BAR_FULL);
         staminaBar.scrollFactor.set(0, 0);
 
@@ -34,7 +31,7 @@ class PlayState extends FlxState {
         add(level.backgroundTiles);
         add(Groups.climbZones);
         add(Groups.avalancheGenerators);
-        add(player);
+        add(Player.player);
         add(level.foregroundTiles);
         add(Groups.avalancheFallingIce);
         add(staminaBar);
@@ -46,7 +43,6 @@ class PlayState extends FlxState {
         super.destroy();
 
         // chargeBar = FlxDestroyUtil.destroy(chargeBar);
-        player = FlxDestroyUtil.destroy(player);
         staminaBar = FlxDestroyUtil.destroy(staminaBar);
     }
 
@@ -54,7 +50,8 @@ class PlayState extends FlxState {
 
         super.update(elapsed);
 
-        FlxG.collide(level.foregroundTiles, player);
+        FlxG.collide(level.foregroundTiles, Player.player);
+        // FlxG.overlap(Groups.avalancheFallingIce, player, Collisions.hurtPlayer);
 
     }
 

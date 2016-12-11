@@ -164,7 +164,8 @@ class TiledLevel extends TiledMap {
                 /*Groups.backgroundSprites.add(climbZone);*/
 
             case "player":
-                /*RoomData.addPlayerSpawnPoint(Std.parseInt(obj.properties.get("room")), x, y);*/
+                var player:Player = new Player(x, y);
+                Player.player = player;
 
         }
 
