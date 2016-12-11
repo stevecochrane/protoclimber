@@ -18,8 +18,9 @@ class Player extends FlxSprite {
     private var baseDragX:Float;
     private var baseGroundJumpVelocity:Float;
     private var baseGroundChargedJumpVelocity:Float;
-    private var baseMoveVelocity:Float;
     private var baseJumpVelocity:Float;
+    private var baseKnockedBackVelocity:Float;
+    private var baseMoveVelocity:Float;
     private var baseRunVelocity:Float;
     private var charge:Float;
     private var chargeTimer:Float;
@@ -27,6 +28,7 @@ class Player extends FlxSprite {
     private var currentAnimation:String;
     private var chargingDragX:Float;
     private var gamepad:FlxGamepad;
+    private var isBeingKnockedBack:Bool;
     private var isClimbingWindup:Bool;
     private var isClimbingWinddown:Bool;
     private var isCharged:Bool;
@@ -63,6 +65,7 @@ class Player extends FlxSprite {
         baseRunVelocity = 100;
         baseGroundJumpVelocity = -accelerationGravity * 0.45;
         baseGroundChargedJumpVelocity = -accelerationGravity * 0.6;
+        baseKnockedBackVelocity = baseGroundJumpVelocity * 0.5;
 
         acceleration.x = 0;
         acceleration.y = 0;
@@ -104,6 +107,9 @@ class Player extends FlxSprite {
 
         isClimbingWindup = false;
         isClimbingWinddown = false;
+
+        isBeingKnockedBack = false;
+
         windupTimer = 0;
         winddownTimer = 0;
 
@@ -193,6 +199,9 @@ class Player extends FlxSprite {
         if (justTouched(FlxObject.FLOOR)) {
             FlxG.log.add("just touched the floor");
             lockedVelocityX = 0;
+            stamina = staminaMax;
+            isBeingKnockedBack = false;
+            FlxFlicker.stopFlickering(this);
 
             if (!isOnWall) {
                 isOnGround = true;
@@ -217,11 +226,6 @@ class Player extends FlxSprite {
         //         stamina -= staminaStepCost;
         //     }
         // }
-
-        // Temporary, instant stamina recharge when on ground
-        if (isOnGround) {
-            stamina = staminaMax;
-        }
 
         if (isCharging) {
             chargeTimer += elapsed;
@@ -327,6 +331,20 @@ class Player extends FlxSprite {
 
         animation.play(currentAnimation);
         currentAnimation = "idle";
+    }
+
+    override public function hurt(damage:Float):Void {
+        if (!isBeingKnockedBack) {
+            isBeingKnockedBack = true;
+            FlxFlicker.flicker(this, 0, 0.04, true, false);
+
+            isOnWall = false;
+            isClimbingWinddown = false;
+            isClimbingWindup = false;
+            stamina = 0;
+
+            velocity.y = baseKnockedBackVelocity;
+        }
     }
 
     private function updateGamepadInput(gamepad:FlxGamepad):Void {
@@ -673,6 +691,10 @@ class Player extends FlxSprite {
     private function cancelClimbingWindup():Void {
         isClimbingWindup = false;
         windupTimer = 0;
+    }
+
+    static public function collisionHurtPlayer(hazard:FlxSprite, player:FlxSprite) {
+        Player.player.hurt(1);
     }
 
 }

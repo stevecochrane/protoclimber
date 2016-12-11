@@ -51,7 +51,7 @@ class PlayState extends FlxState {
         super.update(elapsed);
 
         FlxG.collide(level.foregroundTiles, Player.player);
-        // FlxG.overlap(Groups.avalancheFallingIce, player, Collisions.hurtPlayer);
+        FlxG.overlap(Groups.avalancheFallingIce, Player.player, Player.collisionHurtPlayer);
 
     }
 
