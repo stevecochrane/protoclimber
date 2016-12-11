@@ -14,6 +14,10 @@ class Player extends FlxSprite {
     public static var player:Player;
     public static var staminaMax:Float = 18;
 
+    public static function collisionHurtPlayer(hazard:FlxSprite, player:FlxSprite) {
+        Player.player.hurt(1);
+    }
+
     private var accelerationGravity:Float;
     private var baseDragX:Float;
     private var baseGroundJumpVelocity:Float;
@@ -691,10 +695,6 @@ class Player extends FlxSprite {
     private function cancelClimbingWindup():Void {
         isClimbingWindup = false;
         windupTimer = 0;
-    }
-
-    static public function collisionHurtPlayer(hazard:FlxSprite, player:FlxSprite) {
-        Player.player.hurt(1);
     }
 
 }
