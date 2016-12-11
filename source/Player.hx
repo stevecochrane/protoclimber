@@ -14,9 +14,6 @@ class Player extends FlxSprite {
     public static var player:Player;
     public static var staminaMax:Float = 18;
 
-    public var charge:Float;
-    public var stamina:Float;
-
     private var accelerationGravity:Float;
     private var baseDragX:Float;
     private var baseGroundJumpVelocity:Float;
@@ -24,6 +21,7 @@ class Player extends FlxSprite {
     private var baseMoveVelocity:Float;
     private var baseJumpVelocity:Float;
     private var baseRunVelocity:Float;
+    private var charge:Float;
     private var chargeTimer:Float;
     private var climbingDirection:Int;
     private var currentAnimation:String;
@@ -40,6 +38,7 @@ class Player extends FlxSprite {
     private var isOnGround:Bool;
     private var isOnWall:Bool;
     private var lockedVelocityX:Float;
+    private var stamina:Float;
     private var staminaDrainTimer:Float;
     private var staminaRechargeTimer:Float;
     private var staminaJumpCost:Float;
