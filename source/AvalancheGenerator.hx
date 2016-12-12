@@ -1,5 +1,6 @@
 package;
 
+import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.util.FlxDestroyUtil;
 
@@ -39,7 +40,7 @@ class AvalancheGenerator extends FlxSprite {
 
     private function dropIceIfInRange():Void {
         if (isOnScreen()) {
-            Groups.avalancheFallingIce.recycle(AvalancheFallingIce).init(x + (width / 2), y + (height / 2));
+            Groups.avalancheFallingIce.recycle(AvalancheFallingIce).init(x + (width / 2), FlxG.camera.scroll.y);
         }
     }
 }
