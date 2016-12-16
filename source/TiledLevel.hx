@@ -163,6 +163,10 @@ class TiledLevel extends TiledMap {
                 Groups.climbZones.add(climbZone);
                 /*Groups.backgroundSprites.add(climbZone);*/
 
+            case "hazard_circle":
+                var hazardCircle:HazardCircle = new HazardCircle(x, y);
+                Groups.hazardCircles.add(hazardCircle);
+
             case "player":
                 var player:Player = new Player(x, y);
                 Player.player = player;

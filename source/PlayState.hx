@@ -33,6 +33,7 @@ class PlayState extends FlxState {
         add(Groups.avalancheGenerators);
         add(Player.player);
         add(level.foregroundTiles);
+        add(Groups.hazardCircles);
         add(Groups.avalancheFallingIce);
         add(staminaBar);
         // add(chargeBar);
