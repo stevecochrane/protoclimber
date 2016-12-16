@@ -43,6 +43,10 @@
    </properties>
   </object>
   <object id="274" type="player" x="16" y="664" width="16" height="24"/>
-  <object id="277" type="hazard_circle" x="80" y="464" width="16" height="16"/>
+  <object id="277" type="hazard_circle" x="80" y="464" width="16" height="16">
+   <properties>
+    <property name="tiles" value="5"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

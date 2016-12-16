@@ -6,9 +6,13 @@ import flixel.util.FlxDestroyUtil;
 
 class HazardCircle extends FlxSprite {
 
-    public function new(X:Float, Y:Float) {
+    private var tiles:Float = 0;
+
+    public function new(X:Float, Y:Float, theTiles:Float) {
 
         super(X, Y);
+
+        tiles = theTiles;
 
         width = 16;
         height = 16;
