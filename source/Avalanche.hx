@@ -4,7 +4,7 @@ import flixel.FlxSprite;
 import flixel.math.FlxPoint;
 import flixel.util.FlxDestroyUtil;
 
-class AvalancheFallingIce extends FlxSprite {
+class Avalanche extends FlxSprite {
 
     private var hasFallenFromTop:Bool = false;
 

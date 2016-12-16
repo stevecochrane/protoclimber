@@ -34,7 +34,7 @@ class PlayState extends FlxState {
         add(Player.player);
         add(level.foregroundTiles);
         add(Groups.hazardCircles);
-        add(Groups.avalancheFallingIce);
+        add(Groups.avalanches);
         add(staminaBar);
         // add(chargeBar);
 
@@ -52,7 +52,7 @@ class PlayState extends FlxState {
         super.update(elapsed);
 
         FlxG.collide(level.foregroundTiles, Player.player);
-        FlxG.overlap(Groups.avalancheFallingIce, Player.player, Player.collisionHurtPlayer);
+        FlxG.overlap(Groups.avalanches, Player.player, Player.collisionHurtPlayer);
         FlxG.overlap(Groups.hazardCircles, Player.player, Player.collisionHurtPlayer);
 
     }
