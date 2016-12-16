@@ -61,3 +61,6 @@
 - proto-19
   - The player can no longer start charging a jump while in midair.
   - If the A button is held down when in midair, a charged jump starts as soon as the player hits the ground.
+- proto-20
+  - Added a new 'AvalancheGenerator' object that drops 'Avalanche' objects from the top of the screen, which hurt the player on contact.
+  - Added a new 'HazardCircle' object that flies in a circle and hurts the player on contact.
