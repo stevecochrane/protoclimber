@@ -101,7 +101,7 @@ class Player extends FlxSprite {
         isCharged = false;
         isCharging = false;
 
-        isOnWall = true;
+        isOnWall = false;
 
         isGrabbingTheWall = false;
         isGrabbingTheWallDelayActive = false;
