@@ -14,7 +14,7 @@ class AvalancheFallingIce extends FlxSprite {
         acceleration.y = 400;
         maxVelocity.y = 400;
 
-        makeGraphic(36, 36, 0xFFFFFFFF);
+        makeGraphic(36, 36, 0xFFFF0000);
 
         width = 24;
         height = 24;
