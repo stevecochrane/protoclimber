@@ -74,6 +74,10 @@ class TiledLevel extends TiledMap {
             tilemap.useScaleHack = false;
             tilemap.loadMapFromArray(tileLayer.tileArray, width, height, processedPath, tiledTileset.tileWidth, tiledTileset.tileHeight, OFF, tiledTileset.firstGID, 1, 1);
 
+            if (tileLayer.properties.contains("climbzone")) {
+                Groups.climbZoneTiles = tilemap;
+            }
+
             if (tileLayer.properties.contains("nocollide")) {
                 backgroundTiles.add(tilemap);
 

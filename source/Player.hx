@@ -6,6 +6,7 @@ import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.effects.FlxFlicker;
 import flixel.input.gamepad.FlxGamepad;
+import flixel.tile.FlxTilemap;
 import flixel.util.FlxColor;
 import flixel.util.FlxDestroyUtil;
 
@@ -438,12 +439,12 @@ class Player extends FlxSprite {
     private function pressedUp():Void {
         if (!isCharging) {
             if (isOnWall) {
-                if (!isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x, y - 16 - 1, Groups.climbZones)) {
+                if (!isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x, y - 16 - 1, Groups.climbZoneTiles)) {
                     isClimbingWindup = true;
                     climbingDirection = Direction.UP;
                 }
             } else {
-                if (overlaps(Groups.climbZones) && stamina > 0 && velocity.y >= 0) {
+                if (overlaps(Groups.climbZoneTiles) && stamina > 0 && velocity.y >= 0) {
                     isOnWall = true;
                     /*isGrabbingTheWall = true;*/
                     isOnGround = false;
@@ -462,7 +463,7 @@ class Player extends FlxSprite {
             if (!isOnWall) {
                 velocity.x = baseRunVelocity;
 
-                if (overlaps(Groups.climbZones) && stamina > 0 && velocity.y >= 0) {
+                if (overlaps(Groups.climbZoneTiles) && stamina > 0 && velocity.y >= 0) {
                     isOnWall = true;
                     /*isGrabbingTheWall = true;*/
                     isOnGround = false;
@@ -474,7 +475,7 @@ class Player extends FlxSprite {
                 }
             }
 
-            if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x + 16 + 1, y - 16 - 1, Groups.climbZones)) {
+            if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x + 16 + 1, y - 16 - 1, Groups.climbZoneTiles)) {
                 isClimbingWindup = true;
                 climbingDirection = Direction.UP_RIGHT;
             }
@@ -487,7 +488,7 @@ class Player extends FlxSprite {
                 velocity.x = baseRunVelocity;
             }
 
-            if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x + 16 + 1, y, Groups.climbZones)) {
+            if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x + 16 + 1, y, Groups.climbZoneTiles)) {
                 isClimbingWindup = true;
                 climbingDirection = Direction.RIGHT;
             }
@@ -500,7 +501,7 @@ class Player extends FlxSprite {
                 velocity.x = baseRunVelocity;
             }
 
-            if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x + 16 + 1, y + 16 + 1, Groups.climbZones)) {
+            if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x + 16 + 1, y + 16 + 1, Groups.climbZoneTiles)) {
                 isClimbingWindup = true;
                 climbingDirection = Direction.DOWN_RIGHT;
             }
@@ -509,7 +510,7 @@ class Player extends FlxSprite {
 
     private function pressedDown():Void {
         if (!isCharging) {
-            if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x, y + 16 + 1, Groups.climbZones)) {
+            if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x, y + 16 + 1, Groups.climbZoneTiles)) {
                 isClimbingWindup = true;
                 climbingDirection = Direction.DOWN;
             }
@@ -522,7 +523,7 @@ class Player extends FlxSprite {
                 velocity.x = -baseRunVelocity;
             }
 
-            if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x - 16 - 1, y + 16 + 1, Groups.climbZones)) {
+            if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x - 16 - 1, y + 16 + 1, Groups.climbZoneTiles)) {
                 isClimbingWindup = true;
                 climbingDirection = Direction.DOWN_LEFT;
             }
@@ -534,7 +535,7 @@ class Player extends FlxSprite {
             velocity.x = -baseRunVelocity;
         }
 
-        if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x - 16 - 1, y, Groups.climbZones)) {
+        if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x - 16 - 1, y, Groups.climbZoneTiles)) {
             isClimbingWindup = true;
             climbingDirection = Direction.LEFT;
         }
@@ -545,7 +546,7 @@ class Player extends FlxSprite {
             if (!isOnWall) {
                 velocity.x = -baseRunVelocity;
 
-                if (overlaps(Groups.climbZones) && stamina > 0 && velocity.y >= 0) {
+                if (overlaps(Groups.climbZoneTiles) && stamina > 0 && velocity.y >= 0) {
                     isOnWall = true;
                     /*isGrabbingTheWall = true;*/
                     isOnGround = false;
@@ -557,7 +558,7 @@ class Player extends FlxSprite {
                 }
             }
 
-            if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x - 16 - 1, y - 16 - 1, Groups.climbZones)) {
+            if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x - 16 - 1, y - 16 - 1, Groups.climbZoneTiles)) {
                 isClimbingWindup = true;
                 climbingDirection = Direction.UP_LEFT;
             }
@@ -649,15 +650,15 @@ class Player extends FlxSprite {
         var xGridOffset:Int = xRounded % 16;
         var yGridOffset:Int = yRounded % 16;
 
-        if (xGridOffset <= 8 && overlapsAt(xRounded - xGridOffset - 1, y, Groups.climbZones)) {
+        if (xGridOffset <= 8 && overlapsAt(xRounded - xGridOffset - 1, y, Groups.climbZoneTiles)) {
             x = xRounded - xGridOffset;
-        } else if (xGridOffset >= 8 && overlapsAt(xRounded - xGridOffset + 16 + 1, y, Groups.climbZones)) {
+        } else if (xGridOffset >= 8 && overlapsAt(xRounded - xGridOffset + 16 + 1, y, Groups.climbZoneTiles)) {
             x = xRounded - xGridOffset + 16;
         }
 
-        if (yGridOffset <= 8 && overlapsAt(x, yRounded - yGridOffset - 1, Groups.climbZones)) {
+        if (yGridOffset <= 8 && overlapsAt(x, yRounded - yGridOffset - 1, Groups.climbZoneTiles)) {
             y = yRounded - yGridOffset;
-        } else if (yGridOffset >= 8 && overlapsAt(x, yRounded - yGridOffset + 16 + 1, Groups.climbZones)) {
+        } else if (yGridOffset >= 8 && overlapsAt(x, yRounded - yGridOffset + 16 + 1, Groups.climbZoneTiles)) {
             y = yRounded - yGridOffset + 16;
         }
     }
