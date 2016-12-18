@@ -3,7 +3,7 @@ package;
 class Assets {
 
     //  Data
-    public static inline var TMX_PROTOCLIMBER_1:String = "data/protoclimber-3.tmx";
+    public static inline var TMX_PROTOCLIMBER_1:String = "data/protoclimber-4.tmx";
 
     //  Images
     public static inline var IMG_PLAYER:String = "images/player.png";
