@@ -81,7 +81,6 @@ class TiledLevel extends TiledMap {
                 if (collidableTileLayers == null) {
                     collidableTileLayers = new Array<FlxTilemap>();
                 }
-                setAllTileProperties(tilemap);
                 foregroundTiles.add(tilemap);
                 collidableTileLayers.push(tilemap);
             }
@@ -174,22 +173,4 @@ class TiledLevel extends TiledMap {
         }
 
     }
-
-    private function setAllTileProperties(tilemap:FlxTilemap):Void {
-
-        //  Any tiles that go unmentioned here are just using the
-        //  default, which is to allow collisions on all sides.
-
-        tilemap.setTileProperties(1, FlxObject.ANY);
-        tilemap.setTileProperties(2, FlxObject.ANY);
-        tilemap.setTileProperties(3, FlxObject.ANY);
-        tilemap.setTileProperties(4, FlxObject.ANY);
-
-        tilemap.setTileProperties(12, FlxObject.ANY);
-        tilemap.setTileProperties(13, FlxObject.ANY);
-        tilemap.setTileProperties(14, FlxObject.ANY);
-        tilemap.setTileProperties(15, FlxObject.ANY);
-
-    }
-
 }
