@@ -64,3 +64,5 @@
 - proto-20
   - Added a new 'AvalancheGenerator' object that drops 'Avalanche' objects from the top of the screen, which hurt the player on contact.
   - Added a new 'HazardCircle' object that flies in a circle and hurts the player on contact.
+- proto-21
+  - Greatly expanded the tilemap so now the level is about 11 screens tall. This is a first draft and it could still use refinement.
