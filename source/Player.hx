@@ -439,7 +439,7 @@ class Player extends FlxSprite {
     private function pressedUp():Void {
         if (!isCharging) {
             if (isOnWall) {
-                if (!isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x, y - 16 - 1, Groups.climbZoneTiles)) {
+                if (!isGrabbingTheWall && !isClimbingWinddown) {
                     isClimbingWindup = true;
                     climbingDirection = Direction.UP;
                 }
@@ -475,7 +475,7 @@ class Player extends FlxSprite {
                 }
             }
 
-            if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x + 16 + 1, y - 16 - 1, Groups.climbZoneTiles)) {
+            if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown) {
                 isClimbingWindup = true;
                 climbingDirection = Direction.UP_RIGHT;
             }
@@ -488,7 +488,7 @@ class Player extends FlxSprite {
                 velocity.x = baseRunVelocity;
             }
 
-            if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x + 16 + 1, y, Groups.climbZoneTiles)) {
+            if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown) {
                 isClimbingWindup = true;
                 climbingDirection = Direction.RIGHT;
             }
@@ -501,7 +501,7 @@ class Player extends FlxSprite {
                 velocity.x = baseRunVelocity;
             }
 
-            if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x + 16 + 1, y + 16 + 1, Groups.climbZoneTiles)) {
+            if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown) {
                 isClimbingWindup = true;
                 climbingDirection = Direction.DOWN_RIGHT;
             }
@@ -510,7 +510,7 @@ class Player extends FlxSprite {
 
     private function pressedDown():Void {
         if (!isCharging) {
-            if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x, y + 16 + 1, Groups.climbZoneTiles)) {
+            if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown) {
                 isClimbingWindup = true;
                 climbingDirection = Direction.DOWN;
             }
@@ -523,7 +523,7 @@ class Player extends FlxSprite {
                 velocity.x = -baseRunVelocity;
             }
 
-            if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x - 16 - 1, y + 16 + 1, Groups.climbZoneTiles)) {
+            if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown) {
                 isClimbingWindup = true;
                 climbingDirection = Direction.DOWN_LEFT;
             }
@@ -535,7 +535,7 @@ class Player extends FlxSprite {
             velocity.x = -baseRunVelocity;
         }
 
-        if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x - 16 - 1, y, Groups.climbZoneTiles)) {
+        if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown) {
             isClimbingWindup = true;
             climbingDirection = Direction.LEFT;
         }
@@ -558,7 +558,7 @@ class Player extends FlxSprite {
                 }
             }
 
-            if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown && overlapsAt(x - 16 - 1, y - 16 - 1, Groups.climbZoneTiles)) {
+            if (isOnWall && !isGrabbingTheWall && !isClimbingWinddown) {
                 isClimbingWindup = true;
                 climbingDirection = Direction.UP_LEFT;
             }
@@ -691,6 +691,10 @@ class Player extends FlxSprite {
 
         stamina -= staminaStepCost;
         isClimbingWinddown = true;
+
+        if (!overlaps(Groups.climbZoneTiles)) {
+            isOnWall = false;
+        }
     }
 
     private function cancelClimbingWindup():Void {
