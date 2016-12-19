@@ -12,7 +12,17 @@
    <property name="tileset" value="protoclimber"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztlt2OhDAIhfVG3/+N52Y3MQQov53WOSch2dHCRyllPQ4IgiAIgiAIgiAIgiAIgiAIgiAIgt6m+8+64+/OeHK643cx7qOGIflm4lNfCyMbn4tTVX+NsxOD43ToLQzK2Znxz6lYk9WbGLP+T+3ef29gvGWurTY7s98vlQxuXSVD+06ZxbD4R+TZwwrf92cyF89eZzDORPwZc6BT0f17GSv07S6cVf6/rM74hnaq2cnYc+ataJn8boM//WbIMDo41M/Dyeyjg+HxzTCqc9mJ0cHx9IZkl+E9tUie1O9+PK9iSPXxMmisi8SSnlsZ0llRBne+Fgbn88yX+kuMW2CM8tKePd/RdVp8mpe1VlodPIxRnSx71t5HGNJ+pX1WMS6BYekprrcsPa6Z1U9aJ805KV8vYzRLtefcLJbuDRdrNMstOVZyLDaKU8Wx5jKDo/VPR/xvcipykOZ3h1VzM3vj1nC/owxvnat6LVInbd+jONHzkN6NfFe4l9F+zLJm7GNWvax+nedhWSvNCs9d1tZJsycyL0brqziWGFx9s2c0qh/3O9I/tFa0FyL3RGNEY1bdgyxjRvwRR7t73r7NMqqto85STVaIY+2Nzp4D4zcZnf3acceqGaP52BW/I0cw+hnWWFGGp981hsaM1sjD0PKz1M7K4OJFz6mDkTl/S+29jMj5dnG0mkbjW95Hz9ya/8X8zf2OcKT74TkfD6Oip6PWzejcR2edOs9hxhnP6CEp/qye3f1uzKgVDAaDwWAwGLUPXbtHvg==
+   eJztl80OhCAMBvWi7//Gm032YAhC6Q8LzUwyN9uPuojucQAAAAAAAAAAAAAAAABANq6f0f3J+H/GdfhkvNVa+pe1kgxr/1ofr/vfytkpo5YTQZaMMmfnjC+3cC3RZMqIzsmy/zJkZDnXVjs7rd8vnhm16zwzWt8pszIk9RpGZph1brY4jWsZmXVGxmnoP+MciEQ7/2jGCvt2l5xV3i9ktP9fRmZ5cFZ8nnkralnfJagvf0tLxlt9bc9o+4/MY5kjImOk1pLhvZadMiJyLPv32WNGRln39vx4zqHN6K1V2r937vT2pKS/dO6Rfr0MSx9JhqYu4tqdnTFnlnsZPYfmuZScQ2X/3jtHu0bPHOv9kq51l72BiIiIiIiIiLm8G0Zm/HtuRERERERERETM7Qf5k0Qa
+  </data>
+ </layer>
+ <layer name="climb_zones" width="25" height="240">
+  <properties>
+   <property name="climbzone" value="true"/>
+   <property name="nocollide" value="true"/>
+   <property name="tileset" value="protoclimber"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztl8uOwyAMRbPr///xbGZRIce+fhbQPVKlTmJ8MBCn8zyEEEIIIYQQQgghhBBCCCGEkNv4/H+689Pxe8fnqXG8jc3kX8cijmx+KU/V+muekxySp4NbHKvnZMe3x4rp5ibH1J6dfv5ucNzS13brndnfL5UOKa7Sof1OmXIg4yN4atjhXZedi6fWCUcm/0Qf6OS29303N9Sy0zvsJMdN9exKd0/O7iUyPnNmpLFoPR4mHJ6xtz1fkz2pO/+u/UL7n2NHhydX5pm2rkf3VxujeSU/kl9yvF37vmetgzYvdK2sOWYcWqw2pyrHW73djhV0v9f7HocGOi7Tc7zPXicTDvIbuvc2+6xFHJ6+kXF0faq9mdo8MRGHZy6WKxMbqQO5jt5HY60c0T3vIHNeMo5qJhwZT/UzqI1D5hDtS1qc9D3a+6z4Kg+SY415G2OBOtZ4D9ZaPcq1Ckc0p+U4sS9ZZ9caJ1238qO1oI5qOtZZyp91dJ0JKf9pjuiZo2PWUUmHA3mnZhxWf+zKX8kp5xNd650daK6ow3PeNYfmjK6Rx6HND1k71CHlQ2tc4zocmf1H1t7riOxvl0db02h+5H50z9H5P8J36e+IR3J498fjqDjTmbnc4qigO/+bo5ru/Ktjvd5Jd12rp9uBxkm9qWoOv+4NGU/kHZJhog/t4KnmVkcHE3VInu78k72LEKLzB0BeHhw=
   </data>
  </layer>
  <layer name="foreground" width="25" height="240">
@@ -23,23 +33,12 @@
    eJzt3N2OgjAQhmGDeoz3f7VKIknTdNph+AbBvE/So91lEPszna7ebgAAAAAAAAAAAACu5v5p07c9kmI8q6ZQ3vfUiFH+LPq66muOmsJcXO8luiZ+b+2vWWNssfYd+g2OUs/DGWtJOSeWjX4OAIiy1q9JGMNav1R7hlGsDHWcbPMBMYB/UM9pGXvOevyTi2OEGgjQZ+WjSlY+mqWMl408EcCVWPUHZa40OrtUxDrinNQbY8/z23ruG4kXiWGdb1txrTOTXj2q11o5tSfPbsXLyM8VNSnPHmXvHoM9CpRac4C6BtQat9SAACCud/6oqvuM8j2laG2p9Rx6a1YkxtY8tPX7Gfuz0fujXFfXWMBV9ebLSPPunfe01hiO/M2C/xHHGXG+C/iNcn/Fehat9UbXJkVcxdjmMwPnlr1OLDL2t1aMq31+chTj6DNI1bj0XntPfdx7v9THgXPZknNFbcl1zhhjfUaZMSJ5oeeee98J4Gm9/pCRR2e1NzzMDFw=
   </data>
  </layer>
- <layer name="climb_zones" width="25" height="240">
-  <properties>
-   <property name="climbzone" value="true"/>
-   <property name="nocollide" value="true"/>
-   <property name="tileset" value="protoclimber"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJzt1DEKwEAIBEC7/P/H16RIkTsOooaEGRC7XWyMAAAAAAAAAAAAAAAAAAAAAAAAAAAA+LbjnLjs7OzZVOc/7dnN77ony9s92f7aUaHjjrue6vzO3wWsDSc5Anc=
-  </data>
- </layer>
  <objectgroup name="screen_grid" opacity="0.14">
   <object id="250" x="0" y="3120" width="400" height="240"/>
   <object id="252" x="0" y="3360" width="400" height="240"/>
   <object id="253" x="0" y="3600" width="400" height="240"/>
  </objectgroup>
  <objectgroup name="objects">
-  <object id="265" type="climb_zone" x="8" y="3592" width="384" height="64"/>
   <object id="274" type="player" x="16" y="3784" width="16" height="24"/>
  </objectgroup>
 </map>
