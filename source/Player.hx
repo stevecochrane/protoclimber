@@ -210,9 +210,8 @@ class Player extends FlxSprite {
             isBeingKnockedBack = false;
             FlxFlicker.stopFlickering(this);
 
-            if (!isOnWall) {
-                isOnGround = true;
-            }
+            isOnWall = false;
+            isOnGround = true;
         }
 
         super.update(elapsed);
