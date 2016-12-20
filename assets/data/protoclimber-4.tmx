@@ -30,7 +30,7 @@
    <property name="tileset" value="protoclimber"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt3N2OgjAQhmGDeoz3f7VKIknTdNph+AbBvE/So91lEPszna7ebgAAAAAAAAAAAACu5v5p07c9kmI8q6ZQ3vfUiFH+LPq66muOmsJcXO8luiZ+b+2vWWNssfYd+g2OUs/DGWtJOSeWjX4OAIiy1q9JGMNav1R7hlGsDHWcbPMBMYB/UM9pGXvOevyTi2OEGgjQZ+WjSlY+mqWMl408EcCVWPUHZa40OrtUxDrinNQbY8/z23ruG4kXiWGdb1txrTOTXj2q11o5tSfPbsXLyM8VNSnPHmXvHoM9CpRac4C6BtQat9SAACCud/6oqvuM8j2laG2p9Rx6a1YkxtY8tPX7Gfuz0fujXFfXWMBV9ebLSPPunfe01hiO/M2C/xHHGXG+C/iNcn/Fehat9UbXJkVcxdjmMwPnlr1OLDL2t1aMq31+chTj6DNI1bj0XntPfdx7v9THgXPZknNFbcl1zhhjfUaZMSJ5oeeee98J4Gm9/pCRR2e1NzzMDFw=
+   eJzt21GvgjAMhmHD0WvP//+1SiLJsqxbKV+RmfdJeuWRojLWdYfbDQAAAAAAAAAAAMBs/t6xfOKelONRhUJ53ksjR/la9HPVxxyFwrM43r/omPi+7XrNGmOr7drhusFZ6vtwxlxS3hPL4DoHAERZ89cizGHNX6o1wyhXhjpPtucJOYBfUN/TMtac9finFscIPRCgz6pHlax6NEuZLxt1IoCZWP0HZa002rtU5Dpjn9Sb48j3t3ffN5IvksPa37byWnsmvX5UL1o1tafObuXLqM8VPSnPGuXoGoM1CpRa9wB1D6g1bukBAUBcb/9R1fcZ1XtK0d5S63vozVmRHHvr0NbfZ6zPRr+Pcl7dcgGz6t0vI+FdOx+J1hiOvGfF/4jjitjfBfxGtb9iPov2eqNzkyKvYmzzzMC1Zc8Tq4z1rZVjtucnRznO3oNUjUvvsY/0x73nS38cuJY9NVfUnlonev6ZOSI1m+ece8/re6L3W2XUuDPHC42UDKI=
   </data>
  </layer>
  <objectgroup name="screen_grid" opacity="0.14">
@@ -39,6 +39,6 @@
   <object id="253" x="0" y="3600" width="400" height="240"/>
  </objectgroup>
  <objectgroup name="objects">
-  <object id="274" type="player" x="16" y="3784" width="16" height="24"/>
+  <object id="274" type="player" x="16" y="3768" width="16" height="24"/>
  </objectgroup>
 </map>
