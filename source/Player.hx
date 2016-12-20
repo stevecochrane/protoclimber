@@ -48,6 +48,7 @@ class Player extends FlxSprite {
     private var stamina:Float;
     private var staminaDrainTimer:Float;
     private var staminaRechargeTimer:Float;
+    private var staminaChargedJumpCost:Float;
     private var staminaJumpCost:Float;
     private var staminaStepCost:Float;
     private var velocityFactor:Float;
@@ -92,7 +93,8 @@ class Player extends FlxSprite {
         offset.y = 24;
 
         stamina = staminaMax;
-        staminaJumpCost = 3;
+        staminaJumpCost = 6;
+        staminaChargedJumpCost = staminaJumpCost * 2;
         staminaStepCost = 1;
         staminaDrainTimer = 0;
         staminaRechargeTimer = 0;
@@ -631,7 +633,11 @@ class Player extends FlxSprite {
             }
 
             if (isOnWall) {
-                stamina -= staminaJumpCost;
+                if (isCharged) {
+                    stamina -= staminaChargedJumpCost;
+                } else {
+                    stamina -= staminaJumpCost;
+                }
                 isOnWall = false;
             }
         }
