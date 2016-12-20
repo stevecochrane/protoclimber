@@ -628,18 +628,13 @@ class Player extends FlxSprite {
 
             if (isCharged) {
                 velocity.y = baseGroundChargedJumpVelocity;
+                stamina -= staminaChargedJumpCost;
             } else {
                 velocity.y = baseGroundJumpVelocity;
+                stamina -= staminaJumpCost;
             }
 
-            if (isOnWall) {
-                if (isCharged) {
-                    stamina -= staminaChargedJumpCost;
-                } else {
-                    stamina -= staminaJumpCost;
-                }
-                isOnWall = false;
-            }
+            isOnWall = false;
         }
 
         isCharged = false;
