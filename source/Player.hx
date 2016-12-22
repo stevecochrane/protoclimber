@@ -236,7 +236,7 @@ class Player extends FlxSprite {
         if (isCharging) {
             chargeTimer += elapsed;
 
-            if (chargeTimer >= 0.5) {
+            if (chargeTimer >= 0.5 && stamina >= staminaChargedJumpCost) {
                 isCharged = true;
                 FlxFlicker.flicker(this, 0, 0.04, true, false);
             }
