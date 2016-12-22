@@ -625,15 +625,15 @@ class Player extends FlxSprite {
         if (isOnWall || isOnGround && isTouching(FlxObject.FLOOR)) {
             FlxG.log.add("Jump!");
 
-            if (isCharged) {
+            if (isCharged && stamina >= staminaChargedJumpCost) {
                 velocity.y = baseGroundChargedJumpVelocity;
                 stamina -= staminaChargedJumpCost;
-            } else {
+                isOnWall = false;
+            } else if (stamina >= staminaJumpCost) {
                 velocity.y = baseGroundJumpVelocity;
                 stamina -= staminaJumpCost;
+                isOnWall = false;
             }
-
-            isOnWall = false;
         }
 
         isCharged = false;
