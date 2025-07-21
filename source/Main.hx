@@ -10,10 +10,9 @@ import flixel.FlxState;
 
 class Main extends Sprite {
 
-    private var gameWidth:Int = 400;                        // Width of the game in pixels (might be less / more in actual pixels depending on your zoom).
-    private var gameHeight:Int = 240;                       // Height of the game in pixels (might be less / more in actual pixels depending on your zoom).
+    private var gameWidth:Int = 400;                        // Width of the game in pixels
+    private var gameHeight:Int = 240;                       // Height of the game in pixels
     private var initialState:Class<FlxState> = PlayState;    // The FlxState the game starts with.
-    private var zoom:Float = -1;                            // If -1, zoom is automatically calculated to fit the window dimensions.
     private var framerate:Int = 60;                         // How many frames per second the game should run at.
     private var skipSplash:Bool = true;                     // Whether to skip the flixel splash screen that appears in release mode.
     private var startFullscreen:Bool = true;                // Whether to start the game in fullscreen on desktop targets
@@ -46,14 +45,12 @@ class Main extends Sprite {
         var stageWidth:Int = Lib.current.stage.stageWidth;
         var stageHeight:Int = Lib.current.stage.stageHeight;
 
-        if (zoom == -1) {
-            var ratioX:Float = stageWidth / gameWidth;
-            var ratioY:Float = stageHeight / gameHeight;
-            zoom = Math.min(ratioX, ratioY);
-            gameWidth = Math.ceil(stageWidth / zoom);
-            gameHeight = Math.ceil(stageHeight / zoom);
-        }
+        var ratioX:Float = stageWidth / gameWidth;
+        var ratioY:Float = stageHeight / gameHeight;
+        var zoom:Float = Math.min(ratioX, ratioY);
+        gameWidth = Math.ceil(stageWidth / zoom);
+        gameHeight = Math.ceil(stageHeight / zoom);
 
-        addChild(new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen));
+        addChild(new FlxGame(gameWidth, gameHeight, initialState, framerate, framerate, skipSplash, startFullscreen));
     }
 }
