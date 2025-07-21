@@ -21,7 +21,7 @@ class HazardCircle extends FlxSprite {
         makeGraphic(Std.int(width), Std.int(height), 0xFFA81000);
         immovable = true;
 
-        FlxTween.circularMotion(this, x, y, tiles * 16, 0, true, 4, true, { type: FlxTween.LOOPING });
+        FlxTween.circularMotion(this, x, y, tiles * 16, 0, true, 4, true, { type: LOOPING });
 
     }
 
