@@ -9,6 +9,7 @@ import flixel.input.gamepad.FlxGamepad;
 import flixel.tile.FlxTilemap;
 import flixel.util.FlxColor;
 import flixel.util.FlxDestroyUtil;
+import flixel.util.FlxDirectionFlags;
 
 class Player extends FlxSprite {
 
@@ -83,8 +84,8 @@ class Player extends FlxSprite {
 
         loadGraphic(Assets.IMG_PLAYER, true, 48, 72);
 
-        setFacingFlip(FlxObject.LEFT, true, false);
-        setFacingFlip(FlxObject.RIGHT, false, false);
+        setFacingFlip(FlxDirectionFlags.LEFT, true, false);
+        setFacingFlip(FlxDirectionFlags.RIGHT, false, false);
 
         width = 16;
         height = 24;
