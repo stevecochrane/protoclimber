@@ -204,7 +204,7 @@ class Player extends FlxSprite {
         updateKeyboardInput();
 
         //  Done before super.update() because that resets the touched/touching flags.
-        if (justTouched(FlxObject.FLOOR)) {
+        if (justTouched(FlxDirectionFlags.FLOOR)) {
             FlxG.log.add("just touched the floor");
             lockedVelocityX = 0;
             stamina = staminaMax;
@@ -422,12 +422,12 @@ class Player extends FlxSprite {
         // if (isOnWall) {
         //     FlxG.log.add("just pressed the A button");
         //     isCharging = true;
-        // } else if (isOnGround && isTouching(FlxObject.FLOOR)) {
+        // } else if (isOnGround && isTouching(FlxDirectionFlags.FLOOR)) {
         //     FlxG.log.add("Jump!");
         //     velocity.y = baseGroundJumpVelocity;
         // }
 
-        // if (isOnWall || isOnGround && isTouching(FlxObject.FLOOR)) {
+        // if (isOnWall || isOnGround && isTouching(FlxDirectionFlags.FLOOR)) {
         //     FlxG.log.add("Jump!");
         //     velocity.y = baseGroundJumpVelocity;
         //
@@ -623,7 +623,7 @@ class Player extends FlxSprite {
         //     charge = 0;
         // }
 
-        if (isOnWall || isOnGround && isTouching(FlxObject.FLOOR)) {
+        if (isOnWall || isOnGround && isTouching(FlxDirectionFlags.FLOOR)) {
             FlxG.log.add("Jump!");
 
             if (isCharged) {
