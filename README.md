@@ -31,10 +31,14 @@ needed for a minimal prototype and go from there.
 I wanted climbing to feel strategic, not just a means to get from point A to
 point B. There are a lot of small optimizations you can make to climb further.
 I had ideas for moving surfaces and hazards and such to add more of a timing
-element, maybe even a turn-based feel, but for reasons I can't recall I moved
-on.
+element, maybe even a turn-based feel, but for reasons I can't remember, I
+moved on.
 
 ## Branch Info
+
+I wasn't sure what direction this would take so whenever I tried a new idea, I
+started a new Git branch and logged changes. That gave me flexibility if I
+wanted to test multiple ideas in parallel, or go back to an earlier idea.
 
 - proto-1
   - Press Z to move left (left-hand movement) and X to move right (right-head
