@@ -8,9 +8,10 @@ HaxeFlixel so that it compiles again, and publish it.
 
 ## How to Play
 
-You can play the HTML5 build, though it's unfinished and I think it might
-actually be impossible to complete in its current state. I'll try to make some
-small tweaks to the tilemap to fix this. There is no sound.
+You can [play the HTML5 build](https://stevecochrane.github.io/protoclimber/),
+though it's unfinished and I think it might actually be impossible to complete
+in its current state. I'll try to make some small tweaks to the tilemap to fix
+this. There is no sound.
 
 To play, use the left and right arrow keys to move while on the ground, and
 hold and release X to jump. You can hold down the button to charge a higher
