@@ -31,8 +31,7 @@ needed for a minimal prototype and go from there.
 I wanted climbing to feel strategic, not just a means to get from point A to
 point B. There are a lot of small optimizations you can make to climb further.
 I had ideas for moving surfaces and hazards and such to add more of a timing
-element, maybe even a turn-based feel, but for reasons I can't remember, I
-moved on.
+element, maybe even a turn-based feel, but I ran out of time and moved on.
 
 ## Branch Info
 
