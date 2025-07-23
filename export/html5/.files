@@ -1,0 +1,17 @@
+export/html5/bin/assets/images/tilesets/protoclimber.png
+export/html5/bin/assets/data/protoclimber-1.tmx
+export/html5/bin/flixel/sounds/flixel.mp3
+export/html5/bin/flixel/sounds/beep.mp3
+export/html5/bin/flixel/sounds/beep.ogg
+export/html5/bin/flixel/sounds/flixel.ogg
+export/html5/bin/flixel/fonts/nokiafc22
+export/html5/bin/flixel/fonts/monsterrat
+export/html5/bin/flixel/images/ui/button.png
+export/html5/bin/flixel/images/logo/default.png
+export/html5/bin/flixel/images/transitions/circle.png
+export/html5/bin/flixel/images/transitions/diagonal_gradient.png
+export/html5/bin/flixel/images/transitions/diamond.png
+export/html5/bin/flixel/images/transitions/square.png
+export/html5/bin/data/protoclimber-1.tmx
+export/html5/bin/images/tilesets/protoclimber.png
+export/html5/bin/manifest/default.json
