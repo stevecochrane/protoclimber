@@ -1,5 +1,3 @@
 .DS_Store
 design-materials/
-export/flash
-export/mac64
-export/neko
+export/
