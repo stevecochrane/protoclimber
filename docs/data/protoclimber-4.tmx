@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="240" tilewidth="16" tileheight="16" nextobjectid="278">
+ <properties>
+  <property name="tileset" value="protoclimber"/>
+ </properties>
+ <tileset firstgid="1" name="protoclimber" tilewidth="16" tileheight="16">
+  <image source="../images/tilesets/protoclimber.png" width="128" height="32"/>
+ </tileset>
+ <layer name="background" width="25" height="240">
+  <properties>
+   <property name="nocollide" value="true"/>
+   <property name="tileset" value="protoclimber"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztl80OhCAMBvWi7//Gm032YAhC6Q8LzUwyN9uPuojucQAAAAAAAAAAAAAAAABANq6f0f3J+H/GdfhkvNVa+pe1kgxr/1ofr/vfytkpo5YTQZaMMmfnjC+3cC3RZMqIzsmy/zJkZDnXVjs7rd8vnhm16zwzWt8pszIk9RpGZph1brY4jWsZmXVGxmnoP+MciEQ7/2jGCvt2l5xV3i9ktP9fRmZ5cFZ8nnkralnfJagvf0tLxlt9bc9o+4/MY5kjImOk1pLhvZadMiJyLPv32WNGRln39vx4zqHN6K1V2r937vT2pKS/dO6Rfr0MSx9JhqYu4tqdnTFnlnsZPYfmuZScQ2X/3jtHu0bPHOv9kq51l72BiIiIiIiIiLm8G0Zm/HtuRERERERERETM7Qf5k0Qa
+  </data>
+ </layer>
+ <layer name="climb_zones" width="25" height="240">
+  <properties>
+   <property name="climbzone" value="true"/>
+   <property name="nocollide" value="true"/>
+   <property name="tileset" value="protoclimber"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztl8uOAyEMBOeW///jXHKIkLHbLwZQlxQpyxgXT0/2eQghhBBCCCGEEEIIIYQQQgght/H5fbrz0/G+4/PUOGZ9M/nHvogjm1/KU7X+muckh+Tp4BbH6DnZ8e+xYrq5ybFqz04/fzc4bqlru9XO7O+XSocUV+nQfqesciD9I3jmsMO7LjsWz1xXODL5V9SBTm5733dzw1x2eoed5LhpPrvSXZOze4n0z5wZqS86Hw8rHJ6+t92vlTWpO/+u9UL7n2NHhydX5k5b7dH91fpoXsmP5Jccs7b/Z9Y6aONC18oaY8ahxWpjqnLM5tvtGEH3e3zucWig/TI1x3v3OlnhIO/QvbfZuxZxeOpGxtH1qfZm5uaJiTg8Y7FcmdjIPJB29Dkaa+WI7nkHmfOScVSzwpHxVN9BrR8yhmhd0uKk79HaZ8VXeZAcY8ysjwXqGOM9WGv1KG0VjmhOy3FiXbLOrtVParfyo3NBHdV0rLOUP+voOhNS/tMc0TNHx1pHJR0O5J2acVj1sSt/JaecT3Std3aguaIOz3nXHJozukYehzY+ZO1Qh5QPneMY1+HI7D+y9l5HZH+7PNqaRvMjz6N7jo7/Eb5Lf0c8ksO7Px5HxZnOjOUWRwXd+WeOarrzj46xvdqBeKtZ5UDjpNpUNYa3a0PGE3mH7JQ/6u32VNPteGseHdy6VitrFyFE5wvfuR5b
+  </data>
+ </layer>
+ <layer name="foreground" width="25" height="240">
+  <properties>
+   <property name="tileset" value="protoclimber"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt21GvgjAMhmGDeq3//9cqiSTLsm6lfMVM3yfplUeKyljXHS4XAAAAAAAAAAAAALO5vmP5xC0px70KhfK8l0aO8rXo56qPOQqFR3G8p+iY+L7tes0aY6vt2uG6wVnq+3DGXFLeE8vgOgcARFnz1yLMYc1fqjXDKFeGOk+2xwk5gF9Q39My1pz1+KcWxwg9EKDPqkeVrHo0S5kvG3UigJlY/QdlrTTau1TkOmOf1JvjyPe3d983ki+Sw9rftvJaeya9flQvWjW1p85u5cuozxU9Kc8a5egagzUKlFr3AHUPqDVu6QEBQFxv/1HV9xnVe0rR3lLre+jNWZEce+vQ1t9nrM9Gv49yXt1yAbPq3S8j4V07H4nWGI68Z8X/iOOfsY+MXzCq/RXzWbTXG52bFHkVY45nBpA9R6wy1tBWjtme0RzlOHufUzX2vcc+0oP3ni89eMBvT80VtafWiZ5/Zo5IzeY5597z+p7o/VYZNe7M8QIYFAyi
+  </data>
+ </layer>
+ <objectgroup name="screen_grid" opacity="0.14">
+  <object id="250" x="0" y="3120" width="400" height="240"/>
+  <object id="252" x="0" y="3360" width="400" height="240"/>
+  <object id="253" x="0" y="3600" width="400" height="240"/>
+ </objectgroup>
+ <objectgroup name="objects">
+  <object id="274" type="player" x="16" y="3768" width="16" height="24"/>
+ </objectgroup>
+</map>

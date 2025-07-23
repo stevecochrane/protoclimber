@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="45" tilewidth="16" tileheight="16" nextobjectid="278">
+ <properties>
+  <property name="tileset" value="protoclimber"/>
+ </properties>
+ <tileset firstgid="1" name="protoclimber" tilewidth="16" tileheight="16">
+  <image source="../images/tilesets/protoclimber.png" width="128" height="32"/>
+ </tileset>
+ <layer name="background" width="25" height="45">
+  <properties>
+   <property name="nocollide" value="true"/>
+   <property name="tileset" value="protoclimber"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt00kKACAIQFHd5P1v3D6aLBr5wlt/AzMRMQAAHpYbGn830s7MfqveTKOvoZ9YceO42+icaIQK7147GtpoePaiMX9XOxulGxr9py+I2VIZyA==
+  </data>
+ </layer>
+ <layer name="foreground" width="25" height="45">
+  <properties>
+   <property name="tileset" value="protoclimber"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1TsKACAMREHxU+v9T6ulhCgiSaNvYNtsE9gQAADAL9JInJIdOooSa1Xcbw4dAIBzcl/mWNH2xXpn5L54bdmqx9rLHat/u83uvzzTAfDcAeU=
+  </data>
+ </layer>
+ <objectgroup name="screen_grid" visible="0" opacity="0.14">
+  <object id="250" x="0" y="0" width="400" height="240"/>
+  <object id="252" x="0" y="240" width="400" height="240"/>
+  <object id="253" x="0" y="480" width="400" height="240"/>
+ </objectgroup>
+ <objectgroup name="objects">
+  <object id="256" type="climb_zone" x="40" y="584" width="144" height="64"/>
+  <object id="259" type="climb_zone" x="-7.10543e-15" y="0" width="400" height="272"/>
+  <object id="260" type="climb_zone" x="64" y="368.333" width="272" height="64"/>
+  <object id="262" type="climb_zone" x="0" y="272" width="160" height="96"/>
+  <object id="263" type="climb_zone" x="240" y="272" width="160" height="96"/>
+  <object id="265" type="climb_zone" x="8" y="472" width="384" height="64"/>
+  <object id="266" type="climb_zone" x="232" y="536" width="48" height="128"/>
+  <object id="267" type="climb_zone" x="280" y="536" width="112" height="16"/>
+  <object id="269" type="avalanche_generator" x="240" y="-1.42109e-14" width="32" height="720">
+   <properties>
+    <property name="phase" value="0"/>
+   </properties>
+  </object>
+  <object id="274" type="player" x="16" y="664" width="16" height="24"/>
+  <object id="277" type="hazard_circle" x="112" y="496" width="16" height="16">
+   <properties>
+    <property name="tiles" value="5"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
